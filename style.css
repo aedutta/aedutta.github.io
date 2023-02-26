@@ -11,3 +11,15 @@ html {
 	max-width: 800px;
 	margin: auto;
 }
+
+a {
+ text-decoration: none;
+}
+
+a:link, a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: red;
+}
