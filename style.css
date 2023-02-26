@@ -23,3 +23,15 @@ a:link, a:visited {
 a:hover {
     color: red;
 }
+
+a.nav-home {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-right: auto;
+}
+
+a.nav-link {
+	font-size: 1.25rem;
+	display: flex;
+	align-items: center;
+}
