@@ -1,0 +1,13 @@
+/* CSS variables */
+:root {
+	--pale-blue: #C4AE78;
+	/* Dark mode custom colors */
+	--dark-fg: #363d45;
+	--dark-bg: #f7f3f2;
+}
+
+html {
+	font-family: "Trebuchet MS";
+	max-width: 800px;
+	margin: auto;
+}
