@@ -1,3 +1,4 @@
+//modified from coding train
 let r;
 let factor = 0;
 
