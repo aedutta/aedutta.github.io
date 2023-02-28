@@ -20,8 +20,8 @@ let buffer;
 
 function setup() {
   createCanvas(500, 500);
-  a1 = PI / 2;
-  a2 = PI / 2;
+  a1 = random(0, TWO_PI);
+  a2 = random(0, TWO_PI);
   cx = width / 2;
   cy = 200;
   buffer = createGraphics(width, height);
