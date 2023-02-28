@@ -1,5 +1,7 @@
 let pi;
 let Result;
+var count1 = 0;
+var count2 = 0;
 
 function setup() {
   createCanvas(420, 420);
@@ -27,8 +29,6 @@ function draw() {
 
   const x2 = 200 * cos(a2);
   const y2 = 200 * sin(a2);
-  var count1 = 0;
-  var count2 = 0;
   var a = x1 - x2;
   var b = y1 - y2;
   const len = Math.sqrt( a*a + b*b);
@@ -36,14 +36,14 @@ function draw() {
     strokeWeight(0.5)
     stroke('darkcyan');
     line(x1, y1, x2, y2);
-    count1+=1;
+    count1++;
   }
   if (len >= 200*Math.sqrt(3)) {
     strokeWeight(0.5)
     stroke('azure');
     line(x1, y1, x2, y2);
-    count2+=1;
+    count2++;
   }
-  var prob = count1/(count1 + count2);
-  result.html(`Length of random segment: ${len}`);
+  var prob = count2/(count1 + count2);
+  result.html(`Length of random segment: ${prob}`);
 }
