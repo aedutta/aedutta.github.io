@@ -4,8 +4,8 @@ let x2 = 0;
 let y2 = 0;
 let r1 = 100;
 let r2 = 100;
-let m1 = 15;
-let m2 = 15;
+let m1 = 10;
+let m2 = 10;
 let a1 = 0;
 let a2 = 0;
 let a1_v = 0;
@@ -69,9 +69,6 @@ function draw() {
   a2_v += a2_a;
   a1 += a1_v;
   a2 += a2_v;
-
-  // a1_v *= 0.99;
-  // a2_v *= 0.99;
 
   buffer.stroke('darkcyan');
   if (frameCount > 1) {
