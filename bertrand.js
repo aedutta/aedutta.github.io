@@ -45,5 +45,5 @@ function draw() {
     count2++;
   }
   var prob = count2/(count1 + count2);
-  result.html(`Length of random segment: ${prob}`);
+  result.html(`Probability that a random segment is longer than the side of an inscribed equilateral triangle: ${prob}`);
 }
