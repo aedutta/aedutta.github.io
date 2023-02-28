@@ -1,3 +1,4 @@
+//Thanks to this link for drastically helping me complete this animation: https://thecodingtrain.com/CodingChallenges/093-double-pendulum.html
 let x1 = 0;
 let y1 = 0;
 let x2 = 0;
