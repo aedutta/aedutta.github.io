@@ -1,13 +1,15 @@
 let pi;
+let Result;
 
 function setup() {
   createCanvas(420, 420);
+  result = createP('Approximated probability: ')
   background(0);
   stroke(255);
   noFill();
   translate(width / 2, height / 2);
   ellipse(0, 0, 400, 400);
-  stroke('white')
+  stroke('red')
   line(0, -200, 100*sqrt(3), 100)
   line(0, -200, -100*sqrt(3), 100)
   line(-100*sqrt(3), 100, 100*sqrt(3), 100)
@@ -25,16 +27,23 @@ function draw() {
 
   const x2 = 200 * cos(a2);
   const y2 = 200 * sin(a2);
-
-  if (sqrt((x1-x2)^2 + (y2-y1)^2) < 20) {
+  var count1 = 0;
+  var count2 = 0;
+  var a = x1 - x2;
+  var b = y1 - y2;
+  const len = Math.sqrt( a*a + b*b);
+  if (len < 200*Math.sqrt(3)) {
     strokeWeight(0.5)
     stroke('darkcyan');
     line(x1, y1, x2, y2);
+    count1+=1;
   }
-  if (sqrt((x1-x2)^2 + (y2-y1)^2) >= 20) {
+  if (len >= 200*Math.sqrt(3)) {
     strokeWeight(0.5)
-    stroke('coral');
+    stroke('azure');
     line(x1, y1, x2, y2);
+    count2+=1;
   }
-
+  var prob = count1/(count1 + count2);
+  result.html(`Length of random segment: ${len}`);
 }
