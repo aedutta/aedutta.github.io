@@ -11,7 +11,7 @@ let a1 = 0;
 let a2 = 0;
 let a1_v = 0;
 let a2_v = 0;
-let g = 1;
+let g = 0.5;
 
 let px2 = -1;
 let py2 = -1;
