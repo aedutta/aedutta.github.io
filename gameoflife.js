@@ -27,11 +27,11 @@ function draw() {
       }
     }
     
-  for (let i = 0; i < rows*10; i+=10) {
+  for (let i = 0; i < (rows+1)*10; i+=10) {
     stroke('black')
     line(0, i, cols*10, i);
   }
-  for (let j = 0; j < cols*10; j+=10) {
+  for (let j = 0; j < (cols+1)*10; j+=10) {
       stroke('black');
       line(j, 0, j, rows*10);
     }
