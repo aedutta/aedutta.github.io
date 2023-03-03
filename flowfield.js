@@ -70,7 +70,7 @@ function Particle() {
   }
 
   this.show = function() {
-    stroke('black');
+    stroke('brown');
     strokeWeight(1);
     point(this.pos.x, this.pos.y);
   }
