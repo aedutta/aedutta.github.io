@@ -1,12 +1,12 @@
 // First, we'll set up some global variables to store the state of our simulation.
-let gridSize = 100; // We'll set the size of our grid to be 20x20
+let gridSize = 300; // We'll set the size of our grid to be 20x20
 let cells = []; // This will be our 2D array of cells
 let T = 2.27; // We'll set the temperature of our simulation to 2.27
 let cellSize; // We'll use this to store the size of each cell
 
 // Now, we'll create a 2D array of cells to store the state of our simulation
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(800, 800);
   cellSize = width / gridSize;
   for (let i = 0; i < gridSize; i++) {
     cells[i] = [];
