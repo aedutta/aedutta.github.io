@@ -1,5 +1,5 @@
 // First, we'll set up some global variables to store the state of our simulation.
-let gridSize = 150; // We'll set the size of our grid to be 20x20
+let gridSize = 100; // We'll set the size of our grid to be 20x20
 let cells = []; // This will be our 2D array of cells
 let T = 2.27; // We'll set the temperature of our simulation to 2.27
 let cellSize; // We'll use this to store the size of each cell
