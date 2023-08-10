@@ -12,12 +12,12 @@ function setup() {
   colorMode(HSL, 255);
   background(255);
 
-  trailSlider = createSlider(0, 255, 25, 1);
-  trailSlider.position(10, height + 40);
-  createP('Trail Length:').position(10, height + 15);
+  trailSlider = createSlider(0, 255, 25, 5);
+  trailSlider.position(10, height+30);
+  createP('Trail Length:').position(10, height);
   
   colorDropdown = createSelect();
-  colorDropdown.position(10, height + 70);
+  colorDropdown.position(10, height + 75);
   colorDropdown.option('Floral');
   colorDropdown.option('Rainbow');
   colorDropdown.option('Blues');
@@ -28,7 +28,7 @@ function setup() {
   colorDropdown.option('Ocean');
   colorDropdown.option('Fire');
   colorDropdown.changed(clearCanvas);
-  createP('Color Scheme:').position(10, height + 20);
+  createP('Color Scheme:').position(10, height + 40);
 
   cols = floor(width / 20);
   rows = floor(height / 20);
@@ -175,4 +175,3 @@ function Particle() {
     this.acc.add(force);
   }
 }
-
