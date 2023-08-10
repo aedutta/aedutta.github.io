@@ -1,5 +1,5 @@
 let balls = [];
-let numBalls = 1500;
+let numBalls = 800;
 let hemisphereRadius;
 
 function setup() {
