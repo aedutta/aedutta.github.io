@@ -29,7 +29,7 @@ class Ball {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.vel = createVector(0,0);
-        this.acc = createVector(0, 0.1);
+        this.acc = createVector(0, 0.3);
         this.radius = 2;
         this.color = color(random(255), random(255), random(255));
         this.trail = [];
@@ -52,6 +52,17 @@ class Ball {
             this.trail.shift();
         }
     }
+
+    this.trail.push(this.pos.copy());
+    if (this.trail.length > 20) {
+        this.trail.shift();
+    }
+    
+    // Filter out trail points inside the hemisphere
+    this.trail = this.trail.filter(v => {
+        return dist(v.x, v.y, width/2, height/2) <= hemisphereRadius - this.radius;
+    });
+}
 
     show() {
         stroke(this.color);
