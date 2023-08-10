@@ -41,28 +41,19 @@ class Ball {
         
         let d = dist(this.pos.x, this.pos.y, width/2, height/2);
         if (d >= hemisphereRadius - this.radius) {
-            let normal = createVector(this.pos.x - width/2, this.pos.y - height/2);
-            normal.normalize();
-            this.pos = p5.Vector.add(p5.Vector.mult(normal, hemisphereRadius - this.radius + 0.01), createVector(width/2, height/2));
-            this.vel = p5.Vector.reflect(this.vel, normal);
-        }
+    let normal = createVector(this.pos.x - width/2, this.pos.y - height/2);
+    normal.normalize();
+    this.pos = p5.Vector.add(p5.Vector.mult(normal, hemisphereRadius - this.radius + 2), createVector(width/2, height/2));
+    
+    let reflect = this.vel.copy().sub(normal.mult(2 * this.vel.dot(normal)));
+    this.vel = reflect;
+}
 
         this.trail.push(this.pos.copy());
         if (this.trail.length > 20) {
             this.trail.shift();
         }
     }
-
-    this.trail.push(this.pos.copy());
-    if (this.trail.length > 20) {
-        this.trail.shift();
-    }
-    
-    // Filter out trail points inside the hemisphere
-    this.trail = this.trail.filter(v => {
-        return dist(v.x, v.y, width/2, height/2) <= hemisphereRadius - this.radius;
-    });
-}
 
     show() {
         stroke(this.color);
