@@ -13,11 +13,11 @@ function setup() {
   background(255);
 
   trailSlider = createSlider(0, 255, 25, 1);
-  trailSlider.position(10, height + 10);
-  createP('Trail Length:').position(10, height - 10);
-
+  trailSlider.position(10, height + 40);
+  createP('Trail Length:').position(10, height + 15);
+  
   colorDropdown = createSelect();
-  colorDropdown.position(10, height + 40);
+  colorDropdown.position(10, height + 70);
   colorDropdown.option('Floral');
   colorDropdown.option('Rainbow');
   colorDropdown.option('Blues');
