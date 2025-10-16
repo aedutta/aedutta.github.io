@@ -2,7 +2,7 @@ const AboutPage = () => (
   <section>
     <h2>About</h2>
     <p>
-      I’m an undergraduate at UIUC, majoring in computer engineering and minoring in math. While my future plans are
+      I’m an undergraduate at UIUC, majoring in computer engineering and minoring in math/physics. While my future plans are
       still forming, I’m considering graduate school in EE/CS (either a master’s or Ph.D.) and envision working in
       industry—possibly at a startup or in a research/technical role at a larger corporation.
     </p>
