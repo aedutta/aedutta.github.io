@@ -39,6 +39,7 @@ jobs:
             --exclude '.gitmodules' \
             --exclude '.gitignore' \
             --exclude '.gitattributes' \
+            --exclude 'CNAME' \
             --exclude 'README.md' \
             --exclude 'public/' \
             ./ "$SITE_DIR"/
