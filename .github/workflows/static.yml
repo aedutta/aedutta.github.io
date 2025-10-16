@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SITE_DIR: dist   # <-- CHANGE THIS if your output is '.' or 'build' etc.
+      SITE_DIR: .   # root of the repo contains the static site
 
     steps:
       - name: Checkout
