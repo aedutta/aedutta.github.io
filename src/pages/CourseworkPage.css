@@ -1,0 +1,15 @@
+.coursework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.coursework-grid ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1rem;
+}
+
+.coursework-grid li {
+  margin-bottom: 0.35rem;
+}

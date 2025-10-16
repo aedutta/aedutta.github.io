@@ -1,0 +1,52 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__header {
+  background: rgba(8, 10, 18, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.layout__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0.75rem;
+}
+
+.layout__brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.layout__links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.layout__links a {
+  color: rgba(233, 236, 255, 0.85);
+}
+
+.layout__links a.active {
+  color: #ffffff;
+}
+
+.layout__links span {
+  opacity: 0.45;
+}
+
+.layout__main {
+  flex: 1;
+  width: 100%;
+}

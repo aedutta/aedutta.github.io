@@ -1,0 +1,14 @@
+.footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgba(220, 224, 255, 0.55);
+  font-size: 0.85rem;
+}
+
+.footer hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+}

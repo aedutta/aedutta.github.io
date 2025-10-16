@@ -1,1 +1,7 @@
-public/
+node_modules/
+dist/
+.vite/
+*.log
+*.lock
+Thumbs.db
+.DS_Store
