@@ -191,7 +191,7 @@ const HomePage = () => {
             audio signal processing.
           </p>
         </div>
-        <img className="home__avatar" src="/assets/images/profile.jpg" alt="Ashmit Dutta" />
+        <img className="home__avatar" src="/assets/images/profile1.jpg" alt="Ashmit Dutta" />
       </section>
 
       <section className="home__contacts">
