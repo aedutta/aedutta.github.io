@@ -24,11 +24,6 @@ const phrases = [
 
 const contacts = [
   {
-    label: 'Phone',
-    value: '(612) 323-1292',
-    href: 'tel:+16123231292',
-  },
-  {
     label: 'Primary Email',
     value: 'ashmitd2@illinois.edu',
     href: 'mailto:ashmitd2@illinois.edu',
