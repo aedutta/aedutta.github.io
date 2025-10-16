@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SITE_DIR: .   # root of the repo contains the static site
+      SITE_DIR: public   # publish-ready snapshot assembled in /public
 
     steps:
       - name: Checkout
@@ -31,7 +31,16 @@ jobs:
       # If you have a build, do it here and ensure output goes to $SITE_DIR
       - name: Build
         run: |
-          echo "Assuming static output already in $SITE_DIR"
+          rm -rf "$SITE_DIR"
+          mkdir -p "$SITE_DIR"
+          rsync -av --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.gitmodules' \
+            --exclude '.gitignore' \
+            --exclude 'README.md' \
+            ./ "$SITE_DIR"/
+          echo "Site contents staged in $SITE_DIR"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
