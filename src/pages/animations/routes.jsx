@@ -7,6 +7,7 @@ import DoublePendulum from './DoublePendulum.jsx';
 import FlowField from './FlowField.jsx';
 import GameOfLife from './GameOfLife.jsx';
 import Ising from './Ising.jsx';
+import AuroraVeil from './AuroraVeil.jsx';
 
 const routes = [
   { path: 'bertrand', element: <Bertrand /> },
@@ -17,6 +18,7 @@ const routes = [
   { path: 'flow-field', element: <FlowField /> },
   { path: 'game-of-life', element: <GameOfLife /> },
   { path: 'ising', element: <Ising /> },
+  { path: 'aurora-veil', element: <AuroraVeil /> },
 ];
 
 const animationRouteElements = routes.map(({ path, element }) => (

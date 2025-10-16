@@ -9,6 +9,7 @@ const animations = [
   { path: 'ising', label: 'Ising Model' },
   { path: 'flow-field', label: 'Flow Field (Perlin Noise)' },
   { path: 'cardioid', label: 'Cardioid Caustics' },
+  { path: 'aurora-veil', label: 'Aurora Veil' },
 ];
 
 const AnimationsPage = () => (
