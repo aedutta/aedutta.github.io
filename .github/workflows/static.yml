@@ -38,8 +38,12 @@ jobs:
             --exclude '.github/' \
             --exclude '.gitmodules' \
             --exclude '.gitignore' \
+            --exclude '.gitattributes' \
             --exclude 'README.md' \
+            --exclude 'public/' \
             ./ "$SITE_DIR"/
+          rm -f "$SITE_DIR/.gitattributes"
+          touch "$SITE_DIR/.nojekyll"
           echo "Site contents staged in $SITE_DIR"
 
       - name: Configure Pages
