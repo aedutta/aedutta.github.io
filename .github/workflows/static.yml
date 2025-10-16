@@ -22,29 +22,29 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SITE_DIR: public   # publish-ready snapshot assembled in /public
+      SITE_DIR: dist   # Vite build output directory
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # If you have a build, do it here and ensure output goes to $SITE_DIR
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build
+        run: npm run build
+
+      - name: Prepare artifact
         run: |
-          rm -rf "$SITE_DIR"
-          mkdir -p "$SITE_DIR"
-          rsync -av --delete \
-            --exclude '.git/' \
-            --exclude '.github/' \
-            --exclude '.gitmodules' \
-            --exclude '.gitignore' \
-            --exclude '.gitattributes' \
-            --exclude 'README.md' \
-            --exclude 'public/' \
-            ./ "$SITE_DIR"/
-          rm -f "$SITE_DIR/.gitattributes"
+          test -d "$SITE_DIR" || (echo "::error::Build directory '$SITE_DIR' not found" && exit 1)
           touch "$SITE_DIR/.nojekyll"
-          echo "Site contents staged in $SITE_DIR"
+          echo "Vite build ready in $SITE_DIR"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
