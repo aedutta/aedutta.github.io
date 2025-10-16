@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -21,25 +21,43 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
+    env:
+      SITE_DIR: dist   # <-- CHANGE THIS if your output is '.' or 'build' etc.
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build (if needed)
+      # If you have a build, do it here and ensure output goes to $SITE_DIR
+      - name: Build
         run: |
-          # If you have a build step, put it here and output to a folder like 'dist'
-          # For pure static sites, you can remove this step.
-          echo "No build step"
+          echo "Assuming static output already in $SITE_DIR"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # --- VALIDATE THE ARTIFACT BEFORE UPLOAD ---
+      - name: Validate site folder
+        run: |
+          test -d "$SITE_DIR" || (echo "::error::SITE_DIR '$SITE_DIR' not found" && exit 1)
+          count=$(find "$SITE_DIR" -type f | wc -l)
+          [ "$count" -gt 0 ] || (echo "::error::No files in '$SITE_DIR'" && exit 1)
+          # must have an index.html somewhere (root or subdir is fine for most static setups)
+          found=$(find "$SITE_DIR" -name index.html | wc -l)
+          [ "$found" -ge 1 ] || (echo "::error::No index.html in '$SITE_DIR' (Pages will reject the artifact)" && exit 1)
+          # disallow symlinks/hardlinks (Pages will reject)
+          if find "$SITE_DIR" -type l | grep -q . ; then
+            echo "::error::Symlinks found in '$SITE_DIR' — remove them"; exit 1
+          fi
+          # crude hard-link check: files with link count >1
+          if find "$SITE_DIR" -type f -links +1 | grep -q . ; then
+            echo "::error::Hard links found in '$SITE_DIR' — copy files instead"; exit 1
+          fi
+
       - name: Upload static content
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'          # <- Change to your output dir (e.g., 'dist' or 'build')
-          # name: github-pages  # optional (default is fine)
-          # retention-days: 1   # optional
+          path: ${{ env.SITE_DIR }}
 
       - name: Deploy to GitHub Pages
         id: deployment
