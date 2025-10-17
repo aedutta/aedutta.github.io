@@ -8,6 +8,8 @@ import FlowField from './FlowField.jsx';
 import GameOfLife from './GameOfLife.jsx';
 import Ising from './Ising.jsx';
 import AuroraVeil from './AuroraVeil.jsx';
+import Kuramoto from './Kuramoto.jsx';
+import BryanClark from './BryanClark.jsx';
 
 const routes = [
   { path: 'bertrand', element: <Bertrand /> },
@@ -19,6 +21,8 @@ const routes = [
   { path: 'game-of-life', element: <GameOfLife /> },
   { path: 'ising', element: <Ising /> },
   { path: 'aurora-veil', element: <AuroraVeil /> },
+  { path: 'kuramoto', element: <Kuramoto /> },
+  { path: 'bryan-clark', element: <BryanClark /> },
 ];
 
 const animationRouteElements = routes.map(({ path, element }) => (

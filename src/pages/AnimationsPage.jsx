@@ -10,6 +10,8 @@ const animations = [
   { path: 'flow-field', label: 'Flow Field (Perlin Noise)' },
   { path: 'cardioid', label: 'Cardioid Caustics' },
   { path: 'aurora-veil', label: 'Aurora Veil' },
+  { path: 'kuramoto', label: 'Kuramoto Synchronization' },
+  { path: 'bryan-clark', label: 'Bifurcation: Laminar to Turbulent Flow' },
 ];
 
 const AnimationsPage = () => (
