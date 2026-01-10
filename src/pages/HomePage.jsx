@@ -103,7 +103,7 @@ const HomePage = () => {
             I like writing fast code and shipping real systems, building <Link to="/projects">everything from RISC-V operating systems to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
           </p>
           <div style={{ marginTop: '2rem' }}>
-            <a className="home__button" href="/assets/docs/aedutta.pdf" target="_blank" rel="noreferrer">
+            <a className="home__button" href="/assets/docs/aedutta_website.pdf" target="_blank" rel="noreferrer">
               View My Resume
             </a>
           </div>
