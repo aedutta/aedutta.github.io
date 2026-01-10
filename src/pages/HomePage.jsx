@@ -27,18 +27,11 @@ const phrases = [
 const contacts = [
   {
     label: 'Primary Email',
-    value: 'ashmitd2@illinois.edu',
-    href: 'mailto:ashmitd2@illinois.edu',
+    value: 'ashmitd2<at>illinois.edu',
   },
   {
     label: 'Personal Email',
-    value: 'ashmit.dutta105@gmail.com',
-    href: 'mailto:ashmit.dutta105@gmail.com',
-  },
-  {
-    label: 'Phone',
-    value: '612-323-1292',
-    href: 'tel:6123231292',
+    value: 'ashmit.dutta105<at>gmail.com',
   },
   {
     label: 'LinkedIn',
