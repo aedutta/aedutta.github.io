@@ -1,42 +1,98 @@
 import { Link } from 'react-router-dom';
 import Section from '../components/Section.jsx';
+import './ProjectsPage.css';
+
+const technicalProjects = [
+  {
+    title: 'RISC-V Operating System',
+    href: '', // No link provided in resume
+    period: 'Feb 2025 – May 2025',
+    description: (
+      <>
+        Built a Unix-like OS from scratch in C for a RISC-V machine with paging, multitasking, process isolation, file I/O, and shell support. Implemented drivers (UART, VIRTIO, RTC), a read/write filesystem, system calls, ELF program loading, and Sv39 virtual memory. Developed fork/exec support, pipes, and a trap-based preemptive scheduler; debugged using GDB and QEMU.
+        <br />
+        <i>Working with professor on research project for developing a bare-metal hypervisor to run multiple OSes concurrently.</i>
+      </>
+    ),
+  },
+  {
+    title: 'Autonomous Drone Racing / Crazyflie 2.1',
+    href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?usp=sharing',
+    period: 'Sep 2025 – Present',
+    description: (
+      <>
+        Built a ROS 2 autonomy stack for Crazyflie 2.1 integrating Geometric Controller and CasADi MinSnap trajectory optimization (ECE 484). Developed Python hardware interface bridging planners to embedded firmware via CRTP radio. Finetuned and trained on NeRF data for a YOLOv8-seg gate segmentation model with PyTorch and a multi-Bayesian optimizer.
+        <br />
+        <i>Our drone was the fastest and most accurate in the class.</i>
+      </>
+    ),
+  },
+  {
+    title: 'Ultra-Low Latency Trading Engine',
+    href: 'https://github.com/aedutta/trading-engine',
+    period: 'Feb 2025 – May 2025',
+    description: (
+      <>
+        Built a cloud-native HFT engine in C++20 for Coinbase markets, achieving 36ns median tick-to-signal latency on AWS c7i.large. Implemented a thread-per-core, lock-free design using hugepage-backed SPSC ring buffers, CPU pinning, and isolated cores. Developed a low-latency execution gateway with Boost.Beast and OpenSSL, using persistent HTTP/TLS, TCP NODELAY, and JWT caching.
+      </>
+    ),
+  },
+];
+
+const publications = [
+  {
+    title: 'The Challenge of Teaching Reasoning to LLMs Without RL or Distillation',
+    venue: 'ICML AI for Math Workshop, 2025',
+    href: 'https://arxiv.org/abs/2507.09850',
+    description: '',
+  },
+  {
+    title: 'A Novel AI-Based Technique for 3D Shape Acquisition of Confectionery Sunflower Seeds and Associated Shape Descriptors',
+    venue: '21st International Sunflower Conference, 2023',
+    href: 'https://scholar.google.com/citations?user=v1_28voAAAAJ', // Using previous link or similar
+    description: '',
+  },
+];
 
 const researchItems = [
   {
-    text: 'I am currently working as an undergraduate researcher at ',
-    linkText: 'WaggleNet',
+    title: 'WaggleNet',
     href: 'https://www.wagglenet.org/',
-    tail:
-      ' under Prof. Christopher Schmitz. We design, build, develop and deploy IoT solutions for beekeepers. I am working on the audio team to combine hardware and software to get audio input from bees and predict their behaviors using machine learning models.',
+    description: (
+      <>
+        Undergraduate researcher under Prof. Christopher Schmitz. We design, build, develop and deploy IoT solutions for beekeepers. I worked on the audio team to combine hardware and software to get audio input from bees and predict their behaviors using machine learning models.
+      </>
+    ),
   },
   {
-    text: 'In Spring 2024, I was a research scholar at the ',
-    linkText: 'Illinois Mathematics Lab',
+    title: 'Illinois Mathematics Lab',
     href: 'https://iml.math.illinois.edu/',
-    tail: ' where I worked on a semester-long project on ',
-    extraLinkText: 'Quantum Noise and Simulation',
-    extraHref: '/assets/docs/IML_SP24.pdf',
-    extraTail: '.',
-  },
-  {
-    text: 'In Summer 2023, I worked with ',
-    linkText: 'Dr. Branislav Kisacanin',
-    href: 'https://scholar.google.com/citations?user=v1_28voAAAAJ',
-    tail:
-      ' to apply NeRFs to visualize sunflower seed samples and apply shape analysis. I\'m added as an author for an abstract that is submitted and accepted to present at the International Sunflower Conference in late August 2024.',
+    description: (
+      <>
+        Research scholar working on a semester-long project on <a href="/assets/docs/IML_SP24.pdf" target="_blank" rel="noreferrer">Quantum Noise and Simulation</a> (Spring 2024).
+      </>
+    ),
   },
 ];
 
 const projectLinks = [
-  { label: 'Analog Spectrum Viewer', href: '/assets/docs/spectrumviewer.pdf' },
-  { label: 'Generative Art', href: '/animations', internal: true },
+  { 
+    title: 'Analog Spectrum Viewer',
+    href: '/assets/docs/spectrumviewer.pdf',
+    description: 'A document detailing the design of an analog spectrum analyzer.',
+  },
+  { 
+    title: 'Generative Art', 
+    href: '/animations', 
+    internal: true,
+    description: 'A collection of p5.js animations and mathematical visualizations.',
+  },
   {
-    label: 'Computer Vision AR glasses',
+    title: 'Computer Vision AR glasses',
     href: 'https://github.com/aedutta/ASL-Identification',
-    extra: (
+    description: (
       <>
-        . <i>Progress:</i> My team{' '}
-        <a href="https://ise.illinois.edu/newsroom/61015">won second place at the Bradley Mottier Innovation Competition</a> at UIUC pitching a startup idea, leading to us winning $2000.
+        My team <a href="https://ise.illinois.edu/newsroom/61015" target="_blank" rel="noreferrer">won second place at the Bradley Mottier Innovation Competition</a> ($2000 prize) for our startup pitch.
       </>
     ),
   },
@@ -44,28 +100,28 @@ const projectLinks = [
 
 const highSchoolOutreach = [
   {
-    label: 'Online Physics Olympiad',
+    title: 'Online Physics Olympiad',
     href: 'https://opho.physoly.tech/',
     description:
-      ' – The biggest international student-run physics olympiad in the world. I co-founded the competition during COVID-19 and currently manage a team of 20+ volunteers. Over 4 years, I have written dozens of challenging physics problems while planning out most of the logistics for the competition.',
+      'The biggest international student-run physics olympiad in the world. I co-founded the competition during COVID-19 and currently manage a team of 20+ volunteers.',
   },
   {
-    label: 'Everaise Academy',
+    title: 'Everaise Academy',
     href: 'https://www.everaise.org/course/physics',
     description:
-      ' – A course designed to teach students the fundamentals of classical mechanics. I helped design the course content and wrote over 5 chapters of the published textbook on Amazon.',
+      'A course designed to teach students the fundamentals of classical mechanics. I helped design the course content and wrote over 5 chapters of the published textbook.',
   },
   {
-    label: 'Solutions to Jaan Kalda\'s Handouts',
+    title: 'Solutions to Jaan Kalda\'s Handouts',
     href: 'https://physoly.tech/kalda/',
     description:
-      ' – Almost 300 pages of solutions and translations to Jaan Kalda\'s olympiad handouts. I served as the head author for several of the solution guides.',
+      'Almost 300 pages of solutions and translations to Jaan Kalda\'s olympiad handouts. I served as the head author for several of the solution guides.',
   },
   {
-    label: 'Physoly',
+    title: 'Physoly',
     href: 'https://discord.gg/phods',
     description:
-      ' – An online community of 10k+ physics enthusiasts. We created resources/translations for physics olympiads, partnered with Discord, and curated a YouTube channel with 850+ subscribers.',
+      'An online community of 10k+ physics enthusiasts. We created resources/translations for physics olympiads, partnered with Discord, and curated a YouTube channel.',
   },
 ];
 
@@ -144,123 +200,118 @@ const notes = [
   },
 ];
 
-const ProjectsPage = () => (
-  <div>
-    <h2>Projects</h2>
-    <p>
-      This is a place where I add anything that I have spent a lot of time on and would like to share.
-    </p>
 
-    <Section title="Research">
-      <ul>
-        {researchItems.map((item) => (
-          <li key={item.href}>
-            {item.text}
-            <a href={item.href} target="_blank" rel="noreferrer">
-              {item.linkText}
-            </a>
-            {item.tail}
-            {item.extraHref && (
-              <>
-                <a href={item.extraHref} target="_blank" rel="noreferrer">
-                  {item.extraLinkText}
-                </a>
-                {item.extraTail}
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    </Section>
-
-    <Section title="Finished Projects" headingLevel="h3">
-      <ul>
-        {projectLinks.map(({ label, href, internal, extra }) => (
-          <li key={label}>
-            {internal ? (
-              <Link to={href}>{label}</Link>
-            ) : (
-              <a href={href} target="_blank" rel="noreferrer">
-                {label}
-              </a>
-            )}
-            {extra}
-          </li>
-        ))}
-      </ul>
-    </Section>
-
-    <Section title="High School" headingLevel="h3">
-      <p>
-        Throughout high school, I was deeply involved in physics olympiads. Below are a couple of key contributions of
-        mine as an active member of this community.
-      </p>
-
-      <Section title="Outreach" headingLevel="h4">
-        <ul>
-          {highSchoolOutreach.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-              {item.description}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section title="Handouts" headingLevel="h4">
-        <ul>
-          {handouts.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-              {item.description}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section title="High School Research/Projects" headingLevel="h4">
-        <ul>
-          {researchProjects.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-              {item.description}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section title="Translations & Solution Manuals" headingLevel="h4">
-        <ul>
-          {translations.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section title="Notes & Slides" headingLevel="h4">
-        <ul>
-          {notes.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-              {item.description}
-            </li>
-          ))}
-        </ul>
-      </Section>
-    </Section>
-  </div>
+const ProjectCard = ({ title, href, internal, description }) => (
+  <article className="projects__card">
+    <h3 className="projects__card-title">
+      {internal ? (
+        <Link to={href}>{title}</Link>
+      ) : (
+        <a href={href} target="_blank" rel="noreferrer">
+          {title}
+        </a>
+      )}
+    </h3>
+    <div className="projects__card-desc">{description}</div>
+  </article>
 );
+
+const ListItem = ({ label, href, description }) => (
+  <li>
+    <a href={href} target="_blank" rel="noreferrer">
+      <strong>{label}</strong>
+    </a>
+    <span style={{ color: 'rgba(233, 236, 255, 0.7)' }}>{description}</span>
+  </li>
+);
+
+const ProjectsPage = () => {
+  return (
+    <div className="projects">
+      <Section title="Technical Projects">
+        <div className="projects__grid">
+          {technicalProjects.map((item, i) => (
+            <article key={i} className="projects__card">
+              <h3 className="projects__card-title">
+                 {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
+                 {item.period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{item.period}</span>}
+              </h3>
+              <div className="projects__card-desc">{item.description}</div>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Publications">
+        <div className="projects__grid">
+          {publications.map((item, i) => (
+            <article key={i} className="projects__card">
+               <h3 className="projects__card-title" style={{ fontSize: '1rem' }}>
+                 {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
+               </h3>
+               <div className="projects__card-desc" style={{ fontStyle: 'italic', color: 'rgba(233, 236, 255, 0.6)' }}>{item.venue}</div>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Research Experience">
+        <div className="projects__grid">
+          {researchItems.map((item, i) => (
+            <ProjectCard key={i} {...item} />
+          ))}
+        </div>
+      </Section>
+      
+      <Section title="Other Projects">
+        <div className="projects__grid">
+          {projectLinks.map((item, i) => (
+            <ProjectCard key={i} {...item} />
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Community & Outreach (High School)">
+        <div className="projects__grid">
+          {highSchoolOutreach.map((item, i) => (
+            <ProjectCard key={i} {...item} />
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Public Writings & Handouts">
+        <ul className="projects__list">
+          {handouts.map((item, i) => (
+            <ListItem key={i} {...item} />
+          ))}
+        </ul>
+      </Section>
+
+      <Section title="Old Research Projects">
+        <ul className="projects__list">
+          {researchProjects.map((item, i) => (
+            <ListItem key={i} {...item} />
+          ))}
+        </ul>
+      </Section>
+      
+      <Section title="Translations & Solution Manuals">
+         <ul className="projects__list">
+          {translations.map((item, i) => (
+            <ListItem key={i} {...item} />
+          ))}
+        </ul>
+      </Section>
+
+       <Section title="Notes & Slides">
+         <ul className="projects__list">
+          {notes.map((item, i) => (
+            <ListItem key={i} {...item} />
+          ))}
+        </ul>
+      </Section>
+    </div>
+  );
+};
 
 export default ProjectsPage;

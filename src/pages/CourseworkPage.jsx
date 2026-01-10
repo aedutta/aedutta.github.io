@@ -1,4 +1,5 @@
 import './CourseworkPage.css';
+import Section from '../components/Section.jsx';
 
 const coursework = [
   {
@@ -65,39 +66,43 @@ const highSchool = [
 ];
 
 const CourseworkPage = () => (
-  <section>
-    <h2>Coursework @ UIUC</h2>
-    <div className="coursework-grid">
-      {coursework.map(({ title, items }) => (
-        <div key={title}>
-          <strong>{title}</strong>
-          <ul>
-            {items.map(({ code, name }) => (
-              <li key={code}>
-                <tt>{code}:</tt> {name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-
-    <h3>High School</h3>
-    {highSchool.map(({ school, courses }) => (
-      <div key={school} style={{ marginBottom: '1.5rem' }}>
-        <p>
-          <i>{school}</i>
-        </p>
-        <ul>
-          {courses.map(({ code, name }) => (
-            <li key={code}>
-              <tt>{code}:</tt> {name}
-            </li>
-          ))}
-        </ul>
+  <div className="coursework">
+    <Section title="Coursework @ UIUC">
+      <div className="coursework-grid">
+        {coursework.map(({ title, items }) => (
+          <article key={title} className="coursework__card">
+            <h3 className="coursework__term-title">{title}</h3>
+            <ul className="coursework__list">
+              {items.map(({ code, name }) => (
+                <li key={code} className="coursework__item">
+                  <span className="coursework__code">{code}</span>
+                  <span className="coursework__name">{name}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
-    ))}
-  </section>
+    </Section>
+
+    <Section title="High School">
+      <div className="coursework-grid">
+        {highSchool.map(({ school, courses }) => (
+          <article key={school} className="coursework__card">
+             <h3 className="coursework__term-title" style={{ fontSize: '0.95rem' }}>{school}</h3>
+             <ul className="coursework__list">
+              {courses.map(({ code, name }) => (
+                <li key={code} className="coursework__item">
+                  <span className="coursework__code">{code}</span>
+                  <span className="coursework__name">{name}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </Section>
+  </div>
 );
 
 export default CourseworkPage;

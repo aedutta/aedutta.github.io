@@ -1,0 +1,100 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about__timeline {
+  list-style: none;
+  padding: 0 0 0 1.5rem;
+  margin: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.about__timeline-item {
+  position: relative;
+  padding-left: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.about__timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.about__timeline-dot {
+  position: absolute;
+  left: -1.85rem;
+  top: 0.1rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: #8ab4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(6, 7, 13, 1);
+}
+
+.about__timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.about__timeline-period {
+  font-size: 0.85rem;
+  color: rgba(138, 180, 255, 0.9);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.about__timeline-item h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.about__timeline-org {
+  margin: 0;
+  font-weight: 600;
+  color: rgba(233, 236, 255, 0.85);
+}
+
+.about__timeline-content p:last-child {
+  margin-top: 0.5rem;
+  color: rgba(233, 236, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.about__skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.about__skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.about__skill-card h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: rgba(233, 236, 255, 0.9);
+}
+
+.about__chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about__chip {
+  font-size: 0.8rem;
+  background: rgba(138, 180, 255, 0.1);
+  color: #c5d8ff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
