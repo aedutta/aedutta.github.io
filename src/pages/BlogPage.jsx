@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useForm, ValidationError } from '@formspree/react';
+import SubscribeForm from '../components/SubscribeForm.jsx';
 import './BlogPage.css';
 
 // Auto-import all blog posts from the 'blogs' directory
@@ -37,35 +36,6 @@ const blogPosts = Object.entries(blogModules)
     };
   })
   .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-const SubscribeForm = () => {
-  const [state, handleSubmit] = useForm("xpqqangq");
-
-  if (state.succeeded) {
-    return <div className="subscribe-success">Thanks! You're on the list.</div>;
-  }
-
-  return (
-    <form className="subscribe-form" onSubmit={handleSubmit}>
-      <input
-        id="email"
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-        className="subscribe-input"
-      />
-      <ValidationError 
-        prefix="Email" 
-        field="email"
-        errors={state.errors}
-      />
-      <button type="submit" className="subscribe-button" disabled={state.submitting}>
-        {state.submitting ? 'Joined' : 'Subscribe'}
-      </button>
-    </form>
-  );
-};
 
 const BlogPage = () => (
   <div className="blog-container">

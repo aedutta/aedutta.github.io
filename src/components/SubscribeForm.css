@@ -1,0 +1,56 @@
+.subscribe-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+.subscribe-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.subscribe-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.subscribe-input:focus {
+  outline: none;
+  border-color: #6e80ff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.subscribe-button {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #6e80ff 0%, #8da4ff 100%);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.subscribe-button:hover {
+  transform: translateY(-1px);
+}
+
+.subscribe-button:active {
+  transform: translateY(1px);
+}
+
+.subscribe-success {
+  padding: 0.6rem 1rem;
+  background: rgba(110, 255, 128, 0.1);
+  border: 1px solid rgba(110, 255, 128, 0.2);
+  color: #a5fca5;
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.95rem;
+}

@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import NotFoundPage from './NotFoundPage.jsx';
+import SubscribeForm from '../components/SubscribeForm.jsx';
 import './BlogPage.css';
 
 // Reuse the same import logic to find the specific post
@@ -38,6 +39,14 @@ const BlogPostPage = () => {
         </header>
         <div className="post-content">
           <Component />
+        </div>
+        <div className="post-subscribe">
+          <hr style={{ margin: '3rem 0', borderColor: 'rgba(255,255,255,0.1)' }} />
+          <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Subscribe for updates</h3>
+          <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '1.5rem' }}>
+            If you enjoyed this post, join the list to get new essays in your inbox.
+          </p>
+          <SubscribeForm />
         </div>
       </article>
     </div>
