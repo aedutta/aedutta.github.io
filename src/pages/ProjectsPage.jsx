@@ -4,18 +4,6 @@ import './ProjectsPage.css';
 
 const technicalProjects = [
   {
-    title: 'RISC-V Operating System',
-    href: '', // No link provided in resume
-    period: 'Feb 2025 – May 2025',
-    description: (
-      <>
-        Built a Unix-like OS from scratch in C for a RISC-V machine with paging, multitasking, process isolation, file I/O, and shell support. Implemented drivers (UART, VIRTIO, RTC), a read/write filesystem, system calls, ELF program loading, and Sv39 virtual memory. Developed fork/exec support, pipes, and a trap-based preemptive scheduler; debugged using GDB and QEMU.
-        <br />
-        <i>Working with professor on research project for developing a bare-metal hypervisor to run multiple OSes concurrently.</i>
-      </>
-    ),
-  },
-  {
     title: 'Autonomous Drone Racing / Crazyflie 2.1',
     href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?usp=sharing',
     period: 'Sep 2025 – Present',
@@ -28,12 +16,44 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'RISC-V Operating System',
+    href: '', // No link provided in resume
+    period: 'Feb 2025 – May 2025',
+    description: (
+      <>
+        Built a Unix-like OS from scratch in C for a RISC-V machine with paging, multitasking, process isolation, file I/O, and shell support. Implemented drivers (UART, VIRTIO, RTC), a read/write filesystem, system calls, ELF program loading, and Sv39 virtual memory. Developed fork/exec support, pipes, and a trap-based preemptive scheduler; debugged using GDB and QEMU.
+        <br />
+        <i>Working with professor on research project for developing a bare-metal hypervisor to run multiple OSes concurrently.</i>
+      </>
+    ),
+  },
+  {
     title: 'Ultra-Low Latency Trading Engine',
     href: 'https://github.com/aedutta/trading-engine',
     period: 'Feb 2025 – May 2025',
     description: (
       <>
         Built a cloud-native HFT engine in C++20 for Coinbase markets, achieving 36ns median tick-to-signal latency on AWS c7i.large. Implemented a thread-per-core, lock-free design using hugepage-backed SPSC ring buffers, CPU pinning, and isolated cores. Developed a low-latency execution gateway with Boost.Beast and OpenSSL, using persistent HTTP/TLS, TCP NODELAY, and JWT caching.
+      </>
+    ),
+  },
+  {
+    title: 'FPGA DJ Board',
+    href: 'https://github.com/aedutta/fpga-dj-board',
+    period: 'Oct 2024 – Dec 2024',
+    description: (
+      <>
+        Built an FPGA audio processor integrating DDR3 memory reads from a micro-SD chip (storing WAV file data). Built PWM audio handling and interfacing, FFT IP, and real-time user controls on the board for looping, filtering, and playback speed. Verified functionality with Vivado testbenches that emulate SD transactions, DDR3 bursts, then confirmed end-to-end playback and effects on hardware.
+      </>
+    ),
+  },
+  {
+    title: 'Autonomous Helper Dog',
+    href: 'https://github.com/aedutta/Pawsitive-Pathways',
+    period: 'Feb 2024',
+    description: (
+      <>
+        <b>HackIllinois - John Deere Embedded Track.</b> Pawsitive Pathways is an autonomous service-dog robot that uses a camera and computer vision to detect crosswalks and guide users safely across them. Live video from a Raspberry Pi camera is processed to identify lane boundaries and adjust motor speeds for accurate navigation. Integrated with the Google Maps API, the system provides real-time routing from Location A to Location B, while a companion mobile app delivers audio instructions to ensure a safe and seamless journey.
       </>
     ),
   },
@@ -49,7 +69,7 @@ const publications = [
   {
     title: 'A Novel AI-Based Technique for 3D Shape Acquisition of Confectionery Sunflower Seeds and Associated Shape Descriptors',
     venue: '21st International Sunflower Conference, 2023',
-    href: 'https://scholar.google.com/citations?user=v1_28voAAAAJ', // Using previous link or similar
+    href: 'https://scholar.google.com/scholar_lookup?title=A%20novel%20AI-based%20technique%20for%203d%20shape%20acquisition%20of%20confectionery%20sunflower%20seeds%20%20and%20associated%20shape%20descriptors', // Using previous link or similar
     description: '',
   },
 ];
