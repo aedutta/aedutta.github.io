@@ -1,13 +1,76 @@
+.projects-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .projects-container {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+}
+
+.projects-toc {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .projects-toc {
+    display: block;
+    position: sticky;
+    top: 2rem;
+    padding-right: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .projects-toc h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .projects-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .projects-toc a {
+    color: rgba(244, 246, 251, 0.6);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    display: block;
+    line-height: 1.4;
+  }
+
+  .projects-toc a:hover {
+    color: #8ab4ff;
+  }
+}
+
 .projects {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
+  min-width: 0; /* Prevents flex items from overflowing grid track */
 }
 
 .projects__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .projects__card {

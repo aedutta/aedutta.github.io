@@ -67,6 +67,26 @@ const technicalProjects = [
       </>
     ),
   },
+  { 
+    title: 'Analog Spectrum Viewer',
+    href: '/assets/docs/spectrumviewer.pdf',
+    description: 'A document detailing the design of an analog spectrum analyzer for ECE 198 (James Scholar Honors Project).',
+  },
+  { 
+    title: 'Generative Art', 
+    href: '/animations', 
+    internal: true,
+    description: 'A collection of p5.js animations and mathematical visualizations.',
+  },
+  {
+    title: 'Computer Vision AR glasses',
+    href: 'https://github.com/aedutta/ASL-Identification',
+    description: (
+      <>
+        My team <a href="https://ise.illinois.edu/newsroom/61015" target="_blank" rel="noreferrer">won second place at the Bradley Mottier Innovation Competition</a> ($2000 prize) for our startup pitch.
+      </>
+    ),
+  },
 ];
 
 const publications = [
@@ -85,6 +105,16 @@ const publications = [
 ];
 
 const researchItems = [
+  {
+    title: 'ML Research Intern / UChicago Data Science Institute',
+    href: 'https://datascience.uchicago.edu/people/ashmit-dutta-he-him/',
+    period: 'Jun 2024 – Aug 2024',
+    description: (
+      <>
+        Summer research program to build multi-modal GNNs on HPC clusters for Fermilab’s Exa.TrkX neutrino reconstruction project.
+      </>
+    ),
+  },
   {
     title: 'WaggleNet',
     href: 'https://www.wagglenet.org/',
@@ -231,7 +261,7 @@ const notes = [
 ];
 
 
-const ProjectCard = ({ title, href, internal, description }) => (
+const ProjectCard = ({ title, href, internal, description, period }) => (
   <article className="projects__card">
     <h3 className="projects__card-title">
       {internal ? (
@@ -241,6 +271,7 @@ const ProjectCard = ({ title, href, internal, description }) => (
           {title}
         </a>
       )}
+      {period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{period}</span>}
     </h3>
     <div className="projects__card-desc">{description}</div>
   </article>
@@ -257,89 +288,97 @@ const ListItem = ({ label, href, description }) => (
 
 const ProjectsPage = () => {
   return (
-    <div className="projects">
-      <Section title="Technical Projects">
-        <div className="projects__grid">
-          {technicalProjects.map((item, i) => (
-            <article key={i} className="projects__card">
-              <h3 className="projects__card-title">
-                 {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
-                 {item.period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{item.period}</span>}
-              </h3>
-              <div className="projects__card-desc">{item.description}</div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Publications">
-        <div className="projects__grid">
-          {publications.map((item, i) => (
-            <article key={i} className="projects__card">
-               <h3 className="projects__card-title" style={{ fontSize: '1rem' }}>
-                 {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
-               </h3>
-               <div className="projects__card-desc" style={{ fontStyle: 'italic', color: 'rgba(233, 236, 255, 0.6)' }}>{item.venue}</div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Research Experience">
-        <div className="projects__grid">
-          {researchItems.map((item, i) => (
-            <ProjectCard key={i} {...item} />
-          ))}
-        </div>
-      </Section>
-      
-      <Section title="Other Projects">
-        <div className="projects__grid">
-          {projectLinks.map((item, i) => (
-            <ProjectCard key={i} {...item} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Community & Outreach (High School)">
-        <div className="projects__grid">
-          {highSchoolOutreach.map((item, i) => (
-            <ProjectCard key={i} {...item} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Public Writings & Handouts">
-        <ul className="projects__list">
-          {handouts.map((item, i) => (
-            <ListItem key={i} {...item} />
-          ))}
+    <div className="projects-container">
+      <aside className="projects-toc">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#technical">Technical Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#outreach">Community & Outreach</a></li>
+          <li><a href="#writings">Writings & Handouts</a></li>
+          <li><a href="#old-research">Old Research</a></li>
+          <li><a href="#translations">Translations</a></li>
+          <li><a href="#notes">Notes & Slides</a></li>
         </ul>
-      </Section>
+      </aside>
 
-      <Section title="Old Research Projects">
-        <ul className="projects__list">
-          {researchProjects.map((item, i) => (
-            <ListItem key={i} {...item} />
-          ))}
-        </ul>
-      </Section>
-      
-      <Section title="Translations & Solution Manuals">
-         <ul className="projects__list">
-          {translations.map((item, i) => (
-            <ListItem key={i} {...item} />
-          ))}
-        </ul>
-      </Section>
+      <div className="projects">
+        <Section id="technical" title="Technical Projects">
+          <div className="projects__grid">
+            {technicalProjects.map((item, i) => (
+              <article key={i} className="projects__card">
+                <h3 className="projects__card-title">
+                   {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
+                   {item.period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{item.period}</span>}
+                </h3>
+                <div className="projects__card-desc">{item.description}</div>
+              </article>
+            ))}
+          </div>
+        </Section>
 
-       <Section title="Notes & Slides">
-         <ul className="projects__list">
-          {notes.map((item, i) => (
-            <ListItem key={i} {...item} />
-          ))}
-        </ul>
-      </Section>
+        <Section id="publications" title="Publications">
+          <div className="projects__grid">
+            {publications.map((item, i) => (
+              <article key={i} className="projects__card">
+                 <h3 className="projects__card-title" style={{ fontSize: '1rem' }}>
+                   {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
+                 </h3>
+                 <div className="projects__card-desc" style={{ fontStyle: 'italic', color: 'rgba(233, 236, 255, 0.6)' }}>{item.venue}</div>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="research" title="Research Experience">
+          <div className="projects__grid">
+            {researchItems.map((item, i) => (
+              <ProjectCard key={i} {...item} />
+            ))}
+          </div>
+        </Section>
+        
+        <Section id="other" title="Other Projects">
+          <div className="projects__grid">
+            {highSchoolOutreach.map((item, i) => (
+              <ProjectCard key={i} {...item} />
+            ))}
+          </div>
+        </Section>
+
+        <Section id="writings" title="Public Writings & Handouts">
+          <ul className="projects__list">
+            {handouts.map((item, i) => (
+              <ListItem key={i} {...item} />
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="old-research" title="Old Research Projects">
+          <ul className="projects__list">
+            {researchProjects.map((item, i) => (
+              <ListItem key={i} {...item} />
+            ))}
+          </ul>
+        </Section>
+        
+        <Section id="translations" title="Translations & Solution Manuals">
+           <ul className="projects__list">
+            {translations.map((item, i) => (
+              <ListItem key={i} {...item} />
+            ))}
+          </ul>
+        </Section>
+
+         <Section id="notes" title="Notes & Slides">
+           <ul className="projects__list">
+            {notes.map((item, i) => (
+              <ListItem key={i} {...item} />
+            ))}
+          </ul>
+        </Section>
+      </div>
     </div>
   );
 };

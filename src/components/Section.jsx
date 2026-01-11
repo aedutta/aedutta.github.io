@@ -5,10 +5,10 @@ const headingTags = {
   h5: 'h5',
 };
 
-const Section = ({ title, children, headingLevel = 'h2' }) => {
+const Section = ({ title, children, headingLevel = 'h2', id }) => {
   const Heading = headingTags[headingLevel] || 'h2';
   return (
-    <section style={{ marginBottom: '1.75rem' }}>
+    <section id={id} style={{ marginBottom: '1.75rem' }}>
       {title && <Heading>{title}</Heading>}
       {children}
     </section>
