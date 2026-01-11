@@ -94,13 +94,13 @@ const HomePage = () => {
             <span className={`home__cursor ${typing ? 'home__cursor--typing' : ''}`}> </span>
           </h3>
           <p>
-            I am a junior studying Computer Engineering at the University of Illinois Urbana-Champaign. I am a software engineer (prev at John Deere) and researcher working at the intersection of autonomy, ML, and computer systems.
+            I am a junior studying Computer Engineering at the University of Illinois Urbana-Champaign. I am a software engineer (prev at <b>John Deere</b>) and researcher working at the intersection of autonomy, ML, and computer systems.
           </p>
           <p>
-            I very recently joined the Assured and Trustworthy AI Research Lab under <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Prof. Huan Zhang</a> to research formal verification for embedded and cyber-physical systems.
+            I very recently joined the <b>Assured and Trustworthy AI Research Lab</b> under <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Prof. Huan Zhang</a> to research formal verification for embedded and cyber-physical systems.
           </p>
           <p>
-            I like writing fast code and shipping real systems, building <Link to="/projects">everything from RISC-V operating systems to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
+            I like writing fast code and shipping real systems, building <Link to="/projects">everything from a RISC-V operating system to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
           </p>
           <div style={{ marginTop: '2rem' }}>
             <a className="home__button" href="/assets/docs/aedutta_web.pdf" target="_blank" rel="noreferrer">
