@@ -30,32 +30,14 @@
       crossorigin="anonymous"
       onload="renderMathInElement(document.body);"
     ></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KDXVPW1MG7"></script>
     <script>
-      const defaultAnalyticsIds = ['G-84P0KS3QHB'];
-      const measurementIds = (
-        window.__MEASUREMENT_IDS__ || defaultAnalyticsIds
-      ).filter(Boolean);
-
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-      if (measurementIds.length > 0) {
-        const primaryId = measurementIds[0];
-        const gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(primaryId)}`;
-        gtagScript.addEventListener('error', () => {
-          console.warn(`Google Analytics failed to load for ${primaryId}`);
-        });
-        document.head.appendChild(gtagScript);
-
-        gtag('js', new Date());
-        measurementIds.forEach((id) => gtag('config', id));
-      } else {
-        console.info('Google Analytics measurement IDs not configured.');
-      }
+      gtag('config', 'G-KDXVPW1MG7');
     </script>
   </head>
   <body>
