@@ -105,10 +105,10 @@ const createBertrandSketch = (onProbabilityChange = () => {}, mode = 'endpoints'
     const threshold = R * Math.sqrt(3);
 
     if (len > threshold) {
-      p.stroke('darkcyan'); // Longer than side
-      countInside++; // "Success" usually implies longer
+      p.stroke(255, 255, 255, 70); // White with lower opacity
+      countInside++; 
     } else {
-      p.stroke('rgba(255, 255, 255, 0.1)'); // Shorter
+      p.stroke(0, 255, 255, 60); // Bright Cyan with balanced opacity
       countOutside++;
     }
     
