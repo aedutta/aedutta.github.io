@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Section from '../components/Section.jsx';
 import './ProjectsPage.css';
 
@@ -287,19 +288,62 @@ const ListItem = ({ label, href, description }) => (
 );
 
 const ProjectsPage = () => {
+  const [activeSection, setActiveSection] = useState('technical');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: 0,
+      }
+    );
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
+  const tocLinks = [
+    { id: 'technical', label: 'Technical Projects' },
+    { id: 'publications', label: 'Publications' },
+    { id: 'research', label: 'Research' },
+    { id: 'outreach', label: 'Community & Outreach' },
+    { id: 'writings', label: 'Writings & Handouts' },
+    { id: 'old-research', label: 'Old Research' },
+    { id: 'translations', label: 'Translations' },
+    { id: 'notes', label: 'Notes & Slides' },
+  ];
+
   return (
     <div className="projects-container">
       <aside className="projects-toc">
         <h3>Contents</h3>
         <ul>
-          <li><a href="#technical">Technical Projects</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#outreach">Community & Outreach</a></li>
-          <li><a href="#writings">Writings & Handouts</a></li>
-          <li><a href="#old-research">Old Research</a></li>
-          <li><a href="#translations">Translations</a></li>
-          <li><a href="#notes">Notes & Slides</a></li>
+          {tocLinks.map(({ id, label }) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className={activeSection === id ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                  setActiveSection(id);
+                }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </aside>
 
@@ -339,7 +383,7 @@ const ProjectsPage = () => {
           </div>
         </Section>
         
-        <Section id="other" title="Other Projects">
+        <Section id="outreach" title="Community & Outreach (High School)">
           <div className="projects__grid">
             {highSchoolOutreach.map((item, i) => (
               <ProjectCard key={i} {...item} />

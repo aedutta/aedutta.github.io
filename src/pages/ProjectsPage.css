@@ -44,9 +44,20 @@
     color: rgba(244, 246, 251, 0.6);
     font-size: 0.95rem;
     text-decoration: none;
-    transition: color 0.15s ease;
+    transition: all 0.2s ease;
     display: block;
     line-height: 1.4;
+    border-left: 2px solid transparent;
+    padding-left: 0.5rem;
+  }
+
+  .projects-toc a:hover {
+    color: rgba(244, 246, 251, 0.9);
+  }
+
+  .projects-toc a.active {
+    color: #fff;
+    border-left-color: rgba(255, 255, 255, 0.6);
   }
 
   .projects-toc a:hover {

@@ -16,20 +16,8 @@ const Layout = () => (
             Blog
           </NavLink>
           <span>/</span>
-          <NavLink to="/about" className={getLinkClass}>
-            About
-          </NavLink>
-          <span>/</span>
-          <NavLink to="/projects" className={getLinkClass}>
-            Projects
-          </NavLink>
-          <span>/</span>
-          <NavLink to="/coursework" className={getLinkClass}>
-            Coursework
-          </NavLink>
-          <span>/</span>
-          <NavLink to="/animations" className={getLinkClass}>
-            Generative Art
+          <NavLink to="/work" className={getLinkClass}>
+            Work
           </NavLink>
         </div>
       </nav>

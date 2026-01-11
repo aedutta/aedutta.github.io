@@ -100,7 +100,7 @@ const HomePage = () => {
             I very recently joined the <b>Assured and Trustworthy AI Research Lab</b> under <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Prof. Huan Zhang</a> to research formal verification for embedded and cyber-physical systems.
           </p>
           <p>
-            I like writing fast code and shipping real systems, building <Link to="/projects">everything from a RISC-V operating system to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
+            I like writing fast code and shipping real systems, building <Link to="/work">everything from RISC-V operating systems to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
           </p>
           <div style={{ marginTop: '2rem' }}>
             <a className="home__button" href="/assets/docs/aedutta_web.pdf" target="_blank" rel="noreferrer">
