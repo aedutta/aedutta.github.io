@@ -4,21 +4,9 @@ import './ProjectsPage.css';
 
 const technicalProjects = [
   {
-    title: 'Autonomous Drone Racing / Crazyflie 2.1',
-    href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?usp=sharing',
-    period: 'Oct 2025 – Dec 2025',
-    description: (
-      <>
-        Built a ROS 2 autonomy stack for Crazyflie 2.1 integrating Geometric Controller and CasADi MinSnap trajectory optimization (ECE 484). Developed Python hardware interface bridging planners to embedded firmware via CRTP radio. Finetuned and trained on NeRF data for a YOLOv8-seg gate segmentation model with PyTorch and a multi-Bayesian optimizer.
-        <br />
-        <i>Our drone was the fastest and most accurate in the class.</i>
-      </>
-    ),
-  },
-  {
     title: 'RISC-V Operating System',
     href: '', // No link provided in resume
-    period: 'Mar 2025 – Present',
+    period: 'Feb 2025 – May 2025',
     description: (
       <>
         Built a Unix-like OS from scratch in C for a RISC-V machine with paging, multitasking, process isolation, file I/O, and shell support. Implemented drivers (UART, VIRTIO, RTC), a read/write filesystem, system calls, ELF program loading, and Sv39 virtual memory. Developed fork/exec support, pipes, and a trap-based preemptive scheduler; debugged using GDB and QEMU.
@@ -28,9 +16,21 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'Autonomous Drone Racing / Crazyflie 2.1',
+    href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?usp=sharing',
+    period: 'Sep 2025 – Present',
+    description: (
+      <>
+        Built a ROS 2 autonomy stack for Crazyflie 2.1 integrating Geometric Controller and CasADi MinSnap trajectory optimization (ECE 484). Developed Python hardware interface bridging planners to embedded firmware via CRTP radio. Finetuned and trained on NeRF data for a YOLOv8-seg gate segmentation model with PyTorch and a multi-Bayesian optimizer.
+        <br />
+        <i>Our drone was the fastest and most accurate in the class.</i>
+      </>
+    ),
+  },
+  {
     title: 'Ultra-Low Latency Trading Engine',
     href: 'https://github.com/aedutta/trading-engine',
-    period: 'Dec 2025 – Present',
+    period: 'Feb 2025 – May 2025',
     description: (
       <>
         Built a cloud-native HFT engine in C++20 for Coinbase markets, achieving 36ns median tick-to-signal latency on AWS c7i.large. Implemented a thread-per-core, lock-free design using hugepage-backed SPSC ring buffers, CPU pinning, and isolated cores. Developed a low-latency execution gateway with Boost.Beast and OpenSSL, using persistent HTTP/TLS, TCP NODELAY, and JWT caching.
@@ -54,6 +54,16 @@ const technicalProjects = [
     description: (
       <>
         <b>HackIllinois - John Deere Embedded Track.</b> Pawsitive Pathways is an autonomous service-dog robot that uses a camera and computer vision to detect crosswalks and guide users safely across them. Live video from a Raspberry Pi camera is processed to identify lane boundaries and adjust motor speeds for accurate navigation. Integrated with the Google Maps API, the system provides real-time routing from Location A to Location B, while a companion mobile app delivers audio instructions to ensure a safe and seamless journey.
+      </>
+    ),
+  },
+  {
+    title: 'Online Physics Olympiad',
+    href: 'https://github.com/physoly/OPhO',
+    period: 'Mar 2020 – Present',
+    description: (
+      <>
+        Created the main website and submission portal for the Online Physics Olympiad, hosting 2k+ annual participants a year.
       </>
     ),
   },
