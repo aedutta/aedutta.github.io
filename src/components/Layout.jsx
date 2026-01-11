@@ -19,6 +19,10 @@ const Layout = () => (
           <NavLink to="/work" className={getLinkClass}>
             Work
           </NavLink>
+          <span>/</span>
+          <NavLink to="/animations" className={getLinkClass}>
+            Art
+          </NavLink>
         </div>
       </nav>
     </header>

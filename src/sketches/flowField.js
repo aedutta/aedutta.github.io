@@ -26,7 +26,8 @@ const flowFieldSketch = (p, settingsRef) => {
       this.vel.limit(this.maxspeed);
       this.pos.add(this.vel);
       this.acc.mult(0);
-
+      
+      // Reset if stuck
       if (this.pos.dist(this.lastPos) < 0.01) {
         this.resetPos();
       }
@@ -36,13 +37,31 @@ const flowFieldSketch = (p, settingsRef) => {
     resetPos() {
       this.pos = p.createVector(p.random(p.width), p.random(p.height));
       this.vel = p.createVector(0, 0);
+      this.lastPos = this.pos.copy(); // Reset lastPos to avoid immediate re-trigger
     }
 
     edges() {
-      if (this.pos.x > p.width) this.pos.x = 0;
-      if (this.pos.x < 0) this.pos.x = p.width;
-      if (this.pos.y > p.height) this.pos.y = 0;
-      if (this.pos.y < 0) this.pos.y = p.height;
+      let wrapped = false;
+      if (this.pos.x > p.width) {
+        this.pos.x = 0;
+        wrapped = true;
+      }
+      if (this.pos.x < 0) {
+        this.pos.x = p.width;
+        wrapped = true;
+      }
+      if (this.pos.y > p.height) {
+        this.pos.y = 0;
+        wrapped = true;
+      }
+      if (this.pos.y < 0) {
+        this.pos.y = p.height;
+        wrapped = true;
+      }
+      
+      if (wrapped) {
+        this.lastPos.set(this.pos); // Sync lastPos to prevent drawing artifacts or logic issues
+      }
     }
 
     show() {
@@ -129,8 +148,13 @@ const flowFieldSketch = (p, settingsRef) => {
     }
 
     follow(vectors) {
-      const x = Math.floor(this.pos.x / step);
-      const y = Math.floor(this.pos.y / step);
+      let x = Math.floor(this.pos.x / step);
+      let y = Math.floor(this.pos.y / step);
+      
+      // Constrain lookup to grid bounds to prevent "undefined" force
+      x = p.constrain(x, 0, cols - 1);
+      y = p.constrain(y, 0, rows - 1);
+      
       const index = x + y * cols;
       const force = vectors[index];
       if (force) {
