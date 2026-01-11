@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import BlogPage from './pages/BlogPage.jsx';
+import BlogPostPage from './pages/BlogPostPage.jsx';
 import CourseworkPage from './pages/CourseworkPage.jsx';
 import AnimationsPage from './pages/AnimationsPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="about" element={<AboutPage />} />
       <Route path="work" element={<ProjectsPage />} />
       <Route path="blog" element={<BlogPage />} />
+      <Route path="blog/:slug" element={<BlogPostPage />} />
       <Route path="animations">
         <Route index element={<AnimationsPage />} />
         {animationsRoutes}
