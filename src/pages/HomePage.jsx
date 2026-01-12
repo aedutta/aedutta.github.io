@@ -102,6 +102,11 @@ const HomePage = () => {
           <p>
             I like writing fast code and shipping real systems, building <Link to="/work">everything from RISC-V operating systems to autonomous racing drones</Link>. In high school, I built a 20k+ member global physics competition community.
           </p>
+          <div style={{ marginTop: '2rem' }}>
+            <a className="home__button" href="/assets/docs/aedutta_web.pdf" target="_blank" rel="noreferrer">
+              View My Resume
+            </a>
+          </div>
         </div>
 
         <img className="home__avatar" src="/assets/images/profile2.png" alt="Ashmit Dutta" />
