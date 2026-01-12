@@ -262,21 +262,51 @@ const notes = [
 ];
 
 
-const ProjectCard = ({ title, href, internal, description, period }) => (
-  <article className="projects__card">
-    <h3 className="projects__card-title">
-      {internal ? (
-        <Link to={href}>{title}</Link>
-      ) : (
-        <a href={href} target="_blank" rel="noreferrer">
-          {title}
-        </a>
+const ProjectCard = ({ title, href, internal, description, period, venue }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  // Heuristic: If description is short (string under 100 chars), don't show toggle.
+  // If it's JSX (object), assume it might be long or complex, so allow toggle if needed.
+  // For simplicity, we can just default to showing all for short ones, but technical projects are clearly long.
+  // Let's use a class to clamp it by default.
+  
+  return (
+    <article className={`projects__card ${isExpanded ? 'projects__card--expanded' : ''}`}>
+      <div className="projects__card-header">
+        <h3 className="projects__card-title">
+          {internal ? (
+            <Link to={href}>{title}</Link>
+          ) : (
+            href ? (
+              <a href={href} target="_blank" rel="noreferrer">
+                {title}
+              </a>
+            ) : (
+              <span>{title}</span>
+            )
+          )}
+        </h3>
+        {period && <span className="projects__period">{period}</span>}
+      </div>
+      
+      {venue && <div className="projects__venue">{venue}</div>}
+
+      {description && (
+        <div className="projects__card-content">
+          <div className="projects__card-desc">
+            {description}
+          </div>
+          <button 
+            className="projects__toggle-btn"
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-label={isExpanded ? "Show less" : "Show more"}
+          >
+            {isExpanded ? "Show Less" : "Read More"}
+          </button>
+        </div>
       )}
-      {period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{period}</span>}
-    </h3>
-    <div className="projects__card-desc">{description}</div>
-  </article>
-);
+    </article>
+  );
+};
 
 const ListItem = ({ label, href, description }) => (
   <li>
@@ -351,13 +381,7 @@ const ProjectsPage = () => {
         <Section id="technical" title="Technical Projects">
           <div className="projects__grid">
             {technicalProjects.map((item, i) => (
-              <article key={i} className="projects__card">
-                <h3 className="projects__card-title">
-                   {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
-                   {item.period && <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'rgba(255,255,255,0.4)', marginLeft: '0.5rem' }}>{item.period}</span>}
-                </h3>
-                <div className="projects__card-desc">{item.description}</div>
-              </article>
+              <ProjectCard key={i} {...item} />
             ))}
           </div>
         </Section>
@@ -365,12 +389,7 @@ const ProjectsPage = () => {
         <Section id="publications" title="Publications">
           <div className="projects__grid">
             {publications.map((item, i) => (
-              <article key={i} className="projects__card">
-                 <h3 className="projects__card-title" style={{ fontSize: '1rem' }}>
-                   {item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.title}</a> : item.title}
-                 </h3>
-                 <div className="projects__card-desc" style={{ fontStyle: 'italic', color: 'rgba(233, 236, 255, 0.6)' }}>{item.venue}</div>
-              </article>
+              <ProjectCard key={i} {...item} />
             ))}
           </div>
         </Section>
