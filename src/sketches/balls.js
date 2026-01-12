@@ -18,15 +18,15 @@ const ballsSketch = (p) => {
       this.pos.add(this.vel);
 
       const d = p.dist(this.pos.x, this.pos.y, p.width / 2, p.height / 2);
-      if (d >= hemisphereRadius - this.radius) {
+      if (d >= hemisphereRadius - this.radius - 2) {
         const normal = p.createVector(this.pos.x - p.width / 2, this.pos.y - p.height / 2).normalize();
         const constrained = normal
           .copy()
-          .mult(hemisphereRadius - this.radius + 2)
+          .mult(hemisphereRadius - this.radius - 2)
           .add(p.width / 2, p.height / 2);
         this.pos.set(constrained.x, constrained.y);
         const reflect = this.vel.copy().sub(normal.copy().mult(2 * this.vel.dot(normal)));
-        this.vel = reflect;
+        this.vel = reflect.mult(1.0008);
       }
 
       this.trail.push(this.pos.copy());
