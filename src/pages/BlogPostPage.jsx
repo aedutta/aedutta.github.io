@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import NotFoundPage from './NotFoundPage.jsx';
 import SubscribeForm from '../components/SubscribeForm.jsx';
+import Giscus from '../components/Giscus.jsx';
+import '../components/Giscus.css';
 import './BlogPage.css';
 
 // Reuse the same import logic to find the specific post
@@ -47,6 +49,11 @@ const BlogPostPage = () => {
             If you enjoyed this post, join the list to get new essays in your inbox.
           </p>
           <SubscribeForm />
+        </div>
+        <div className="post-comments">
+          <hr style={{ margin: '3rem 0', borderColor: 'rgba(255,255,255,0.1)' }} />
+          <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Comments</h3>
+          <Giscus term={slug} />
         </div>
       </article>
     </div>

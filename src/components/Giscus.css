@@ -1,0 +1,8 @@
+.giscus-wrapper {
+  margin-top: 2rem;
+}
+
+/* Override giscus iframe to blend with site */
+.giscus-wrapper .giscus-frame {
+  width: 100%;
+}
