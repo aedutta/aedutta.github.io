@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Giscus = ({ term }) => {
+const Giscus = () => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -15,16 +15,15 @@ const Giscus = ({ term }) => {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.setAttribute('data-repo', 'aedutta/aedutta.github.io');
-    script.setAttribute('data-repo-id', '');
-    script.setAttribute('data-category', '');
-    script.setAttribute('data-category-id', '');
-    script.setAttribute('data-mapping', 'specific');
-    script.setAttribute('data-term', term);
+    script.setAttribute('data-repo-id', 'R_kgDOJqPkvQ');
+    script.setAttribute('data-category', 'Blog Comments');
+    script.setAttribute('data-category-id', 'DIC_kwDOJqPkvc4C4p8C');
+    script.setAttribute('data-mapping', 'pathname');
     script.setAttribute('data-strict', '0');
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'top');
-    script.setAttribute('data-theme', 'dark_dimmed');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'dark_high_contrast');
     script.setAttribute('data-lang', 'en');
     script.crossOrigin = 'anonymous';
     script.async = true;
@@ -36,7 +35,7 @@ const Giscus = ({ term }) => {
         container.removeChild(container.firstChild);
       }
     };
-  }, [term]);
+  }, []);
 
   return <div ref={ref} className="giscus-wrapper" />;
 };

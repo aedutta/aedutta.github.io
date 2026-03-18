@@ -53,7 +53,7 @@ const BlogPostPage = () => {
         <div className="post-comments">
           <hr style={{ margin: '3rem 0', borderColor: 'rgba(255,255,255,0.1)' }} />
           <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Comments</h3>
-          <Giscus term={slug} />
+          <Giscus />
         </div>
       </article>
     </div>
