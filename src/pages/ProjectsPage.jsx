@@ -337,7 +337,7 @@ const ProjectCard = ({ title, href, internal, description, period, venue, tags, 
 
       {description && (
         <div className="projects__card-content">
-          <div className="projects__card-desc" ref={descRef}>
+          <div className={`projects__card-desc${isClamped && !isExpanded ? ' projects__card-desc--clamped' : ''}`} ref={descRef}>
             {description}
           </div>
           {(isClamped || isExpanded) && (

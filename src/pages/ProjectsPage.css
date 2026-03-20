@@ -204,7 +204,7 @@
 }
 
 /* Fade on clamped text */
-.projects__card:not(.projects__card--expanded) .projects__card-desc::after {
+.projects__card-desc--clamped::after {
   content: '';
   position: absolute;
   bottom: 0;
