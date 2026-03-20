@@ -1,13 +1,27 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import Section from '../components/Section.jsx';
 import './ProjectsPage.css';
 
 const technicalProjects = [
   {
+    title: 'Stanford TreeHacks 2026 — 2x Track Winner',
+    href: 'https://github.com/aedutta/shot-spot-treehacks-26',
+    period: 'Feb 2026',
+    tags: ['Hackathon', 'ML'],
+    featured: true,
+    description: (
+      <>
+        <b>What if you could search video like you search text?</b> 🏆 2nd place, Modal Inference track. 🏆 3rd place, Bright Data AI-Driven Data track.
+      </>
+    ),
+  },
+  {
     title: 'Autonomous Drone Racing / Crazyflie 2.1',
     href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?usp=sharing',
     period: 'Oct 2025 – Dec 2025',
+    tags: ['Robotics', 'ML'],
+    featured: true,
     description: (
       <>
         Built a ROS 2 autonomy stack for Crazyflie 2.1 integrating Geometric Controller and CasADi MinSnap trajectory optimization (ECE 484). Developed Python hardware interface bridging planners to embedded firmware via CRTP radio. Finetuned and trained on NeRF data for a YOLOv8-seg gate segmentation model with PyTorch and a multi-Bayesian optimizer.
@@ -17,9 +31,23 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'Ultra-Low Latency Trading Engine',
+    href: 'https://github.com/aedutta/trading-engine',
+    period: 'Dec 2025 – Jan 2026',
+    tags: ['Systems', 'C++'],
+    featured: true,
+    description: (
+      <>
+        Built a cloud-native HFT engine in C++20 for Coinbase markets, achieving 36ns median tick-to-signal latency on AWS c7i.large. Implemented a thread-per-core, lock-free design using hugepage-backed SPSC ring buffers, CPU pinning, and isolated cores. Developed a low-latency execution gateway with Boost.Beast and OpenSSL, using persistent HTTP/TLS, TCP NODELAY, and JWT caching.
+      </>
+    ),
+  },
+  {
     title: 'RISC-V Operating System',
     href: '', // No link provided in resume
-    period: 'Mar 2025 – Present',
+    period: 'Mar 2025 – May 2025',
+    tags: ['Systems', 'C'],
+    featured: true,
     description: (
       <>
         Built a Unix-like OS from scratch in C for a RISC-V machine with paging, multitasking, process isolation, file I/O, and shell support. Implemented drivers (UART, VIRTIO, RTC), a read/write filesystem, system calls, ELF program loading, and Sv39 virtual memory. Developed fork/exec support, pipes, and a trap-based preemptive scheduler; debugged using GDB and QEMU.
@@ -29,29 +57,10 @@ const technicalProjects = [
     ),
   },
   {
-    title: 'Ultra-Low Latency Trading Engine',
-    href: 'https://github.com/aedutta/trading-engine',
-    period: 'Dec 2025 – Present',
-    description: (
-      <>
-        Built a cloud-native HFT engine in C++20 for Coinbase markets, achieving 36ns median tick-to-signal latency on AWS c7i.large. Implemented a thread-per-core, lock-free design using hugepage-backed SPSC ring buffers, CPU pinning, and isolated cores. Developed a low-latency execution gateway with Boost.Beast and OpenSSL, using persistent HTTP/TLS, TCP NODELAY, and JWT caching.
-      </>
-    ),
-  },
-  {
-    title: 'Stanford TreeHacks 2026 — 2x Track Winner',
-    href: 'https://github.com/aedutta/shot-spot-treehacks-26',
-    period: 'Feb 2026',
-    description: (
-      <>
-        2nd place, Modal Inference track. 3rd place, Bright Data AI-Driven Data track.
-      </>
-    ),
-  },
-  {
     title: 'FPGA DJ Board',
     href: 'https://github.com/aedutta/fpga-dj-board',
     period: 'Oct 2024 – Dec 2024',
+    tags: ['Hardware', 'FPGA'],
     description: (
       <>
         Built an FPGA audio processor integrating DDR3 memory reads from a micro-SD chip (storing WAV file data). Built PWM audio handling and interfacing, FFT IP, and real-time user controls on the board for looping, filtering, and playback speed. Verified functionality with Vivado testbenches that emulate SD transactions, DDR3 bursts, then confirmed end-to-end playback and effects on hardware.
@@ -62,6 +71,7 @@ const technicalProjects = [
     title: 'Autonomous Helper Dog',
     href: 'https://github.com/aedutta/Pawsitive-Pathways',
     period: 'Feb 2024',
+    tags: ['Hackathon', 'Robotics'],
     description: (
       <>
         <b>HackIllinois - John Deere Embedded Track.</b> Pawsitive Pathways is an autonomous service-dog robot that uses a camera and computer vision to detect crosswalks and guide users safely across them. Live video from a Raspberry Pi camera is processed to identify lane boundaries and adjust motor speeds for accurate navigation. Integrated with the Google Maps API, the system provides real-time routing from Location A to Location B, while a companion mobile app delivers audio instructions to ensure a safe and seamless journey.
@@ -69,9 +79,20 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'Computer Vision AR glasses',
+    href: 'https://github.com/aedutta/ASL-Identification',
+    tags: ['ML', 'Hardware'],
+    description: (
+      <>
+        My team <a href="https://ise.illinois.edu/newsroom/61015" target="_blank" rel="noreferrer">won second place at the Bradley Mottier Innovation Competition</a> ($2000 prize) for our startup pitch.
+      </>
+    ),
+  },
+  {
     title: 'Online Physics Olympiad',
     href: 'https://github.com/physoly/OPhO',
     period: 'Mar 2020 – Present',
+    tags: ['Web'],
     description: (
       <>
         Created the main website and submission portal for the Online Physics Olympiad, hosting 2k+ annual participants a year.
@@ -81,22 +102,15 @@ const technicalProjects = [
   { 
     title: 'Analog Spectrum Viewer',
     href: '/assets/docs/spectrumviewer.pdf',
+    tags: ['Hardware'],
     description: 'A document detailing the design of an analog spectrum analyzer for ECE 198 (James Scholar Honors Project).',
   },
   { 
     title: 'Generative Art', 
     href: '/animations', 
     internal: true,
+    tags: ['Creative'],
     description: 'A collection of p5.js animations and mathematical visualizations.',
-  },
-  {
-    title: 'Computer Vision AR glasses',
-    href: 'https://github.com/aedutta/ASL-Identification',
-    description: (
-      <>
-        My team <a href="https://ise.illinois.edu/newsroom/61015" target="_blank" rel="noreferrer">won second place at the Bradley Mottier Innovation Competition</a> ($2000 prize) for our startup pitch.
-      </>
-    ),
   },
 ];
 
@@ -272,15 +286,26 @@ const notes = [
 ];
 
 
-const ProjectCard = ({ title, href, internal, description, period, venue }) => {
+const ProjectCard = ({ title, href, internal, description, period, venue, tags, featured }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  // Heuristic: If description is short (string under 100 chars), don't show toggle.
-  // If it's JSX (object), assume it might be long or complex, so allow toggle if needed.
-  // For simplicity, we can just default to showing all for short ones, but technical projects are clearly long.
-  // Let's use a class to clamp it by default.
+  const [isClamped, setIsClamped] = useState(false);
+  const descRef = useRef(null);
+
+  const checkClamped = useCallback(() => {
+    const el = descRef.current;
+    if (el) {
+      setIsClamped(el.scrollHeight > el.clientHeight + 1);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkClamped();
+    window.addEventListener('resize', checkClamped);
+    return () => window.removeEventListener('resize', checkClamped);
+  }, [checkClamped]);
   
   return (
-    <article className={`projects__card ${isExpanded ? 'projects__card--expanded' : ''}`}>
+    <article className={`projects__card ${isExpanded ? 'projects__card--expanded' : ''} ${featured ? 'projects__card--featured' : ''}`}>
       <div className="projects__card-header">
         <h3 className="projects__card-title">
           {internal ? (
@@ -297,21 +322,33 @@ const ProjectCard = ({ title, href, internal, description, period, venue }) => {
         </h3>
         {period && <span className="projects__period">{period}</span>}
       </div>
+
+      {tags && tags.length > 0 && (
+        <div className="projects__tags">
+          {tags.map((tag) => (
+            <span key={tag} className={`projects__tag projects__tag--${tag.toLowerCase()}`}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       
       {venue && <div className="projects__venue">{venue}</div>}
 
       {description && (
         <div className="projects__card-content">
-          <div className="projects__card-desc">
+          <div className="projects__card-desc" ref={descRef}>
             {description}
           </div>
-          <button 
-            className="projects__toggle-btn"
-            onClick={() => setIsExpanded(!isExpanded)}
-            aria-label={isExpanded ? "Show less" : "Show more"}
-          >
-            {isExpanded ? "Show Less" : "Read More"}
-          </button>
+          {(isClamped || isExpanded) && (
+            <button 
+              className="projects__toggle-btn"
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-label={isExpanded ? "Show less" : "Show more"}
+            >
+              {isExpanded ? "Show Less" : "Read More"}
+            </button>
+          )}
         </div>
       )}
     </article>
