@@ -39,6 +39,16 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'Stanford TreeHacks 2026 — 2x Track Winner',
+    href: 'https://github.com/aedutta/shot-spot-treehacks-26',
+    period: 'Feb 2026',
+    description: (
+      <>
+        2nd place, Modal Inference track. 3rd place, Bright Data AI-Driven Data track.
+      </>
+    ),
+  },
+  {
     title: 'FPGA DJ Board',
     href: 'https://github.com/aedutta/fpga-dj-board',
     period: 'Oct 2024 – Dec 2024',
