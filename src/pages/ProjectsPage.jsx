@@ -5,6 +5,18 @@ import './ProjectsPage.css';
 
 const technicalProjects = [
   {
+    title: 'Out-of-Order RV32IM Processor (ECE 411)',
+    href: '/assets/docs/mp_ooo_final_report.pdf',
+    period: 'Mar 2026 – May 2026',
+    tags: ['Hardware', 'Systems'],
+    featured: true,
+    description: (
+      <>
+        Designed a 2-way superscalar out-of-order RV32IM processor in SystemVerilog with explicit register renaming (RAT/RRF/PRF/free list), 16-entry ROB, split load/store queue with store-to-load forwarding, and tournament branch predictor with BTB and RAS. Achieved a geometric-mean PD<sup>4</sup> of ~253 (3.6× over staff baseline) and a peak IPC of 1.325 on compression, ranking top 10 in the class design competition. Synthesized at 500 MHz with zero RVFI/Spike mismatches across all six benchmarks.
+      </>
+    ),
+  },
+  {
     title: 'Stanford TreeHacks 2026 — 2x Track Winner',
     href: 'https://github.com/aedutta/shot-spot-treehacks-26',
     period: 'Feb 2026',
