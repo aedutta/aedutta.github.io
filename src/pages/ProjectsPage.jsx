@@ -17,6 +17,18 @@ const technicalProjects = [
     ),
   },
   {
+    title: 'CUDA CNN Optimization (ECE 408)',
+    href: '/assets/docs/ece408_m3_report.pdf',
+    period: 'Mar 2026 – Apr 2026',
+    tags: ['GPU', 'ML', 'Systems'],
+    featured: true,
+    description: (
+      <>
+        Optimized a forward-pass CNN in CUDA for an NVIDIA A40, combining a shape-specialized implicit-GEMM Conv1 kernel (constant-memory weights, 4-column thread coarsening) with a WMMA Tensor Core Conv2 kernel performing fused implicit im2col plus tiled FP16/FP32 matmul. Achieved 12.55 ms total convolution time at batch 10000 with 0.8714 accuracy — a ~6.6× speedup over the M2 fused baseline, well under the 60 ms full-credit target. Drove design via Nsight Compute roofline/stall analysis, parameter sweeps over WMMA tile shapes and warps-per-block, and per-optimization measurement (streams, constant memory, restrict, loop unrolling, FP16, joint register/shared tiling).
+      </>
+    ),
+  },
+  {
     title: 'Stanford TreeHacks 2026 — 2x Track Winner',
     href: 'https://github.com/aedutta/shot-spot-treehacks-26',
     period: 'Feb 2026',
