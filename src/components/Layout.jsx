@@ -35,6 +35,10 @@ const Layout = () => {
             <NavLink to="/animations" className={getLinkClass}>
               Art
             </NavLink>
+            <span>/</span>
+            <NavLink to="/yorozuya" className={getLinkClass}>
+              Studio
+            </NavLink>
           </div>
         </nav>
       </header>

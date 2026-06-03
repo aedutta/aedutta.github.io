@@ -7,6 +7,7 @@ import BlogPage from './pages/BlogPage.jsx';
 import BlogPostPage from './pages/BlogPostPage.jsx';
 import CourseworkPage from './pages/CourseworkPage.jsx';
 import AnimationsPage from './pages/AnimationsPage.jsx';
+import YorozuyaPage from './pages/YorozuyaPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import animationsRoutes from './pages/animations/routes.jsx';
 
@@ -22,6 +23,7 @@ const App = () => (
         <Route index element={<AnimationsPage />} />
         {animationsRoutes}
       </Route>
+      <Route path="yorozuya" element={<YorozuyaPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
