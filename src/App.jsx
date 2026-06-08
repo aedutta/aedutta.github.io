@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from './components/Layout.jsx';
 import animationsRoutes from './pages/animations/routes.jsx';
-import HomePage from './pages/HomePage.jsx';
 
+const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage.jsx'));
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage.jsx'));
@@ -24,7 +24,7 @@ const App = () => (
     <Route path="preview/:slug" element={wrap(SketchPreview)} />
     <Route path="record/:slug" element={wrap(SketchRecorder)} />
     <Route element={<Layout />}>
-      <Route index element={<HomePage />} />
+      <Route index element={wrap(HomePage)} />
       <Route path="work" element={wrap(ProjectsPage)} />
       <Route path="blog" element={wrap(BlogPage)} />
       <Route path="blog/:slug" element={wrap(BlogPostPage)} />
