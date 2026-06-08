@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
+import 'katex/dist/katex.min.css';
 import './styles/main.css';
 
 const redirectPath = sessionStorage.getItem('spa-redirect');

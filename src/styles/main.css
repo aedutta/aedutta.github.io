@@ -1,13 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inconsolata:wght@400;600;700&display=swap');
 
 
 :root {
-  color-scheme: dark;
-  font-family: 'Inconsolata', monospace;
-  line-height: 1.5;
+  color-scheme: light;
+  --bg: #faf8f3;
+  --bg-soft: #f3efe5;
+  --ink: #1c1c1f;
+  --ink-soft: #3a3a40;
+  --ink-mute: #6b6a66;
+  --rule: rgba(28, 28, 31, 0.14);
+  --rule-soft: rgba(28, 28, 31, 0.08);
+  --link: #0645ad;
+  --link-hover: #1a6dd6;
+  --accent: #7a1f1f;
+
+  font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
   font-weight: 400;
-  color: #f4f6fb;
-  background-color: #06070d;
+  color: var(--ink);
+  background-color: var(--bg);
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -17,22 +33,25 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #06070d;
-  color: #f4f6fb;
+  background: var(--bg);
+  color: var(--ink);
 }
 
 a {
-  color: #8ab4ff;
+  color: var(--link);
   text-decoration: none;
+  border-bottom: 1px solid rgba(6, 69, 173, 0.25);
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 a:hover {
-  color: #c5d8ff;
+  color: var(--link-hover);
+  border-bottom-color: currentColor;
 }
 
 main {
-  padding: 1.5rem 1rem 3rem;
-  max-width: 960px;
+  padding: 1.5rem 1.25rem 3.5rem;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -42,8 +61,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  color: #fbfcff;
+  font-family: 'EB Garamond', 'Iowan Old Style', Palatino, Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 2rem 0 0.6rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.45rem;
 }
 
 p {
@@ -54,11 +92,37 @@ ul {
   padding-left: 1.2rem;
 }
 
+code,
+kbd,
+pre,
+samp {
+  font-family: 'Inconsolata', 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
 code {
-  font-family: 'Inconsolata', monospace;
+  background: var(--bg-soft);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
 }
 
 hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--rule);
+  margin: 2rem 0;
 }
+
+::selection {
+  background: rgba(6, 69, 173, 0.18);
+  color: var(--ink);
+}
+
+.tex .katex {
+  font-size: 1em;
+  color: inherit;
+}
+
+a .tex .katex {
+  color: inherit;
+}
+

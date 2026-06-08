@@ -12,7 +12,7 @@ const P5Canvas = ({ sketch, className, settings }) => {
   useEffect(() => {
     let instance;
     if (containerRef.current && typeof sketch === 'function') {
-      instance = new p5((p) => sketch(p, settingsRef));
+      instance = new p5((p) => sketch(p, settingsRef), containerRef.current);
     }
     return () => {
       if (instance) {

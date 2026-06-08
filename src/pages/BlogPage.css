@@ -1,183 +1,207 @@
 .blog-container {
-  max-width: 800px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 1rem 0 3rem;
 }
 
 .blog-header {
-  margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.5rem;
 }
 
 .blog-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #fff, #a5b4fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+  color: var(--ink);
 }
 
 .blog-intro {
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1.5rem;
+  color: var(--ink-mute);
+  font-style: italic;
+  margin-bottom: 1.25rem;
 }
 
 /* Subscribe Form */
 .subscribe-form {
   display: flex;
   gap: 0.5rem;
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .subscribe-input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
-  color: #fff;
-  font-family: inherit;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.55rem 0.85rem;
+  color: var(--ink);
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
   font-size: 0.95rem;
-  transition: border-color 0.2s;
+  transition: border-color 0.15s;
 }
 
 .subscribe-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--ink-mute);
+  font-style: italic;
 }
 
 .subscribe-input:focus {
   outline: none;
-  border-color: #6e80ff;
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--link);
+  background: var(--bg);
 }
 
 .subscribe-button {
-  padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, #6e80ff 0%, #8da4ff 100%);
-  border: none;
-  border-radius: 6px;
-  color: #fff;
+  padding: 0.55rem 1rem;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  color: var(--bg);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.1s;
+  transition: background 0.15s;
 }
 
 .subscribe-button:hover {
-  transform: translateY(-1px);
-}
-
-.subscribe-button:active {
-  transform: translateY(1px);
+  background: var(--link);
+  border-color: var(--link);
 }
 
 .subscribe-success {
-  padding: 0.6rem 1rem;
-  background: rgba(110, 255, 128, 0.1);
-  border: 1px solid rgba(110, 255, 128, 0.2);
-  color: #a5fca5;
-  border-radius: 6px;
+  padding: 0.5rem 0.85rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 3px;
   display: inline-block;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  font-style: italic;
 }
 
 .repo-link {
-  color: #a5b4fc;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-.repo-link:hover {
-  text-decoration: underline;
+  color: var(--link);
+  font-size: 1.05rem;
 }
 
 /* Blog Detail Page */
 .blog-nav {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .back-link {
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  color: var(--ink-mute);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  border-bottom: none;
 }
 
 .back-link:hover {
-  color: #fff;
+  color: var(--link);
 }
 
 .post-header-full {
   margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
 }
 
 .post-title-full {
-  font-size: 2.5rem;
-  margin: 0.5rem 0 0 0;
-  line-height: 1.2;
-  color: #fff;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0.35rem 0 0;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .post-date-full {
-  color: #a5b4fc;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
+  color: var(--ink-mute);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-/* Blog List Styles */
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.post-content p {
+  margin: 0 0 1.15rem;
+}
+
+/* Blog List */
 .blog-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .blog-list-item {
   display: block;
   text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  border-radius: 0;
+  background: none;
+  transition: none;
+  color: var(--ink);
 }
 
 .blog-list-item:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(165, 180, 252, 0.3);
+  background: none;
+}
+
+.blog-list-item:hover .post-title-list {
+  color: var(--link);
 }
 
 .post-meta-list {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .post-date-list {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85rem;
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink-mute);
+  font-size: 0.78rem;
+  font-family: 'Inconsolata', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .post-title-list {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.5rem;
-  color: #fff;
+  margin: 0 0 0.5rem;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.15s ease;
 }
 
 .post-description-list {
-  margin: 0 0 1rem 0;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
+  margin: 0 0 0.75rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
 }
 
 .read-more {
-  font-size: 0.9rem;
-  color: #a5b4fc;
-  font-weight: 500;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--link);
+  text-transform: uppercase;
 }
 
 .blog-list-item:hover .read-more {
   text-decoration: underline;
 }
-

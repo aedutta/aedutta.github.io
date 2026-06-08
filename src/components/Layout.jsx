@@ -27,17 +27,17 @@ const Layout = () => {
             <NavLink to="/blog" className={getLinkClass}>
               Blog
             </NavLink>
-            <span>/</span>
+            <span aria-hidden="true">·</span>
             <NavLink to="/work" className={getLinkClass}>
               Work
             </NavLink>
-            <span>/</span>
+            <span aria-hidden="true">·</span>
             <NavLink to="/animations" className={getLinkClass}>
               Art
             </NavLink>
-            <span>/</span>
-            <NavLink to="/yorozuya" className={getLinkClass}>
-              Studio
+            <span aria-hidden="true">·</span>
+            <NavLink to="/physics" className={getLinkClass}>
+              Physics
             </NavLink>
           </div>
         </nav>
