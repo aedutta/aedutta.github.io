@@ -98,7 +98,7 @@ const HomePage = () => (
         <span className="paper__dropcap">I</span>
         'm a senior at UIUC studying computer engineering. Most of what I do
         lives between autonomy, machine learning, and computer systems. I'm
-        currently an ML engineering intern at <b>Nablon AI</b> and a researcher
+        currently an intern at <b>Nablon AI</b> and a researcher
         in Prof.{' '}
         <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">
           Huan Zhang
