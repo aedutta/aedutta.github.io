@@ -67,25 +67,36 @@ const featuredSketches = [
 
 const LazySketchCard = ({ path, label, loadSketch }) => {
   const ref = useRef(null);
+  const hasMountedRef = useRef(false);
   const [bundle, setBundle] = useState(null);
+  const [paused, setPaused] = useState(true);
 
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') {
       Promise.all([import('../components/P5Canvas.jsx'), loadSketch()]).then(
-        ([mod, sketch]) => setBundle({ Canvas: mod.default, sketch }),
+        ([mod, sketch]) => {
+          setBundle({ Canvas: mod.default, sketch });
+          setPaused(false);
+        },
       );
       return undefined;
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          observer.disconnect();
+        const visible = entry.isIntersecting;
+        if (visible && !hasMountedRef.current) {
+          hasMountedRef.current = true;
           Promise.all([import('../components/P5Canvas.jsx'), loadSketch()]).then(
-            ([mod, sketch]) => setBundle({ Canvas: mod.default, sketch }),
+            ([mod, sketch]) => {
+              setBundle({ Canvas: mod.default, sketch });
+              setPaused(false);
+            },
           );
+        } else if (hasMountedRef.current) {
+          setPaused(!visible);
         }
       },
-      { rootMargin: '200px' },
+      { rootMargin: '100px', threshold: 0 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -107,6 +118,7 @@ const LazySketchCard = ({ path, label, loadSketch }) => {
             sketch={bundle.sketch}
             className="paper__sketch-canvas"
             frameRate={30}
+            paused={paused}
           />
         )}
       </div>

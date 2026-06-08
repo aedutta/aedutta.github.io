@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import p5 from 'p5';
 
-const P5Canvas = ({ sketch, className, settings, frameRate }) => {
+const P5Canvas = ({ sketch, className, settings, frameRate, paused }) => {
   const containerRef = useRef(null);
+  const instanceRef = useRef(null);
   const settingsRef = useRef(settings);
 
   useEffect(() => {
@@ -22,13 +23,25 @@ const P5Canvas = ({ sketch, className, settings, frameRate }) => {
           };
         }
       }, containerRef.current);
+      instanceRef.current = instance;
     }
     return () => {
       if (instance) {
         instance.remove();
       }
+      instanceRef.current = null;
     };
   }, [sketch, frameRate]);
+
+  useEffect(() => {
+    const instance = instanceRef.current;
+    if (!instance) return;
+    if (paused) {
+      instance.noLoop();
+    } else {
+      instance.loop();
+    }
+  }, [paused]);
 
   return <div className={className} ref={containerRef} />;
 };
