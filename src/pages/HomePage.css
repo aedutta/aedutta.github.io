@@ -342,24 +342,10 @@
   border: 1px solid var(--rule);
   border-radius: 3px;
   background-color: #0e101a;
-  position: relative;
-  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: border-color 0.2s ease;
-}
-
-.paper__sketch-canvas {
-  position: absolute;
-  inset: 0;
-}
-
-.paper__sketch-thumb canvas {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.25);
-  transform-origin: center center;
-  pointer-events: none;
-  display: block;
 }
 
 .paper__sketch-card:hover .paper__sketch-thumb {
