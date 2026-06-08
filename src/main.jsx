@@ -13,10 +13,19 @@ if (redirectPath) {
   }
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const rootEl = document.getElementById('root');
+const tree = (
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+// If the server prerendered real app HTML (not the splash), hydrate over it.
+// Otherwise (splash or empty), do a normal client-render.
+if (rootEl.dataset.prerendered === 'true') {
+  ReactDOM.hydrateRoot(rootEl, tree);
+} else {
+  ReactDOM.createRoot(rootEl).render(tree);
+}
