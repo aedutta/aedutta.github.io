@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Tex from '../components/Tex.jsx';
-import P5Canvas from '../components/P5Canvas.jsx';
-import gameOfLifeSketch from '../sketches/gameOfLife.js';
-import isingSketch from '../sketches/ising.js';
-import flowFieldSketch from '../sketches/flowField.js';
-import cardioidSketch from '../sketches/cardioid.js';
 import './HomePage.css';
 
 const selectedWork = [
@@ -48,46 +43,72 @@ const selectedWork = [
 ];
 
 const featuredSketches = [
-  { path: 'game-of-life', label: 'Game of Life', sketch: gameOfLifeSketch },
-  { path: 'ising', label: 'Ising Model', sketch: isingSketch },
-  { path: 'flow-field', label: 'Flow Field', sketch: flowFieldSketch },
-  { path: 'cardioid', label: 'Cardioid Caustics', sketch: cardioidSketch },
+  {
+    path: 'game-of-life',
+    label: 'Game of Life',
+    loadSketch: () => import('../sketches/gameOfLife.js').then((m) => m.default),
+  },
+  {
+    path: 'ising',
+    label: 'Ising Model',
+    loadSketch: () => import('../sketches/ising.js').then((m) => m.default),
+  },
+  {
+    path: 'flow-field',
+    label: 'Flow Field',
+    loadSketch: () => import('../sketches/flowField.js').then((m) => m.default),
+  },
+  {
+    path: 'cardioid',
+    label: 'Cardioid Caustics',
+    loadSketch: () => import('../sketches/cardioid.js').then((m) => m.default),
+  },
 ];
 
-const LazySketchCard = ({ path, label, sketch }) => {
+const LazySketchCard = ({ path, label, loadSketch }) => {
   const ref = useRef(null);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [bundle, setBundle] = useState(null);
 
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') {
-      setShouldAnimate(true);
+      Promise.all([import('../components/P5Canvas.jsx'), loadSketch()]).then(
+        ([mod, sketch]) => setBundle({ Canvas: mod.default, sketch }),
+      );
       return undefined;
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldAnimate(true);
           observer.disconnect();
+          Promise.all([import('../components/P5Canvas.jsx'), loadSketch()]).then(
+            ([mod, sketch]) => setBundle({ Canvas: mod.default, sketch }),
+          );
         }
       },
-      { rootMargin: '100px' }
+      { rootMargin: '200px' },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [loadSketch]);
 
   return (
     <Link ref={ref} to={`/animations/${path}`} className="paper__sketch-card">
       <div
         className="paper__sketch-thumb"
         style={
-          shouldAnimate
+          bundle
             ? undefined
             : { backgroundImage: `url(/assets/images/sketches/${path}.png)` }
         }
         aria-hidden="true"
       >
-        {shouldAnimate && <P5Canvas sketch={sketch} className="paper__sketch-canvas" />}
+        {bundle && (
+          <bundle.Canvas
+            sketch={bundle.sketch}
+            className="paper__sketch-canvas"
+            frameRate={30}
+          />
+        )}
       </div>
       <span className="paper__sketch-label">{label}</span>
     </Link>
