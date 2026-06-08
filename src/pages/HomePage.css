@@ -1,146 +1,426 @@
-.home {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+.paper {
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: 0.75rem 0 2.5rem;
 }
 
-.home__intro {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4rem;
-}
-
-.home__bio {
-  flex: 1 1 300px;
-}
-
-.home__bio h1 {
-  font-size: 2.5rem;
+.paper__masthead {
   margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
 }
 
-.home__bio p {
-  line-height: 1.7;
-  font-size: 1.1rem;
-  max-width: 60ch;
-  color: rgba(244, 246, 251, 0.9);
-  margin-top: 1.25rem;
-  margin-bottom: 0;
+.paper__title {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0 0.3rem;
+  line-height: 1.1;
 }
 
-.home__typing {
-  margin: 0;
-  font-size: 1.1rem;
-  min-height: 1.5rem;
-}
-
-.home__typing-text {
+.paper__subtitle {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0.35rem 0 0;
+  line-height: 1.4;
   white-space: nowrap;
 }
 
-.home__cursor {
-  display: inline-block;
-  width: 0.4em;
-  border-right: 3px solid #f5f7ff;
-  margin-left: 0.1em;
-  animation: blink 0.8s steps(1, end) infinite;
+@media (max-width: 700px) {
+  .paper__subtitle {
+    white-space: normal;
+    font-size: 0.9rem;
+  }
 }
 
-.home__cursor--typing {
-  animation: typing 0.3s steps(1, end) infinite;
+.paper__section {
+  margin: 1.6rem 0;
 }
 
-.home__avatar {
-  width: 300px;
-  height: 300px;
-  border-radius: 16px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  flex-shrink: 0;
-}
-
-.home__contacts {
-  max-width: 600px;
-}
-
-.home__contacts ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.paper__heading {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.65rem;
+  color: var(--ink);
 }
 
-.home__contacts li {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.6rem 0.2rem;
+.paper__section-num {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink-mute);
   font-size: 1rem;
 }
 
-.home__contacts span:first-child {
-  color: rgba(199, 206, 255, 0.6);
+.paper__see-all {
+  margin-left: auto;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  border-bottom: none;
+  font-weight: 400;
 }
 
-.home__cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+.paper__see-all:hover {
+  color: var(--link);
 }
 
-.home__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.65rem 1.4rem;
-  border-radius: 999px;
+.paper__lede {
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.paper__dropcap {
+  float: left;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
   font-weight: 600;
-  background: #8ab4ff;
-  color: #06070d;
-  border: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-size: 2.9rem;
+  line-height: 0.92;
+  padding: 0.28rem 0.45rem 0 0;
+  color: var(--ink);
 }
 
-.home__button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 28px -18px rgba(138, 180, 255, 0.8);
+.paper__cite {
+  margin: 2rem 0 0;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
 }
 
-.home__button--ghost {
-  background: transparent;
-  color: #f4f6fb;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.paper__cite summary {
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--ink-mute);
+  list-style: none;
+  user-select: none;
 }
 
-.home__button--ghost:hover {
-  box-shadow: 0 12px 26px -22px rgba(255, 255, 255, 0.65);
+.paper__cite summary::-webkit-details-marker {
+  display: none;
 }
 
-@keyframes blink {
-  0%,
-  49% {
-    border-color: transparent;
-  }
-  50%,
-  100% {
-    border-color: #f5f7ff;
+.paper__cite summary::before {
+  content: "[+] ";
+  color: var(--ink-mute);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.95em;
+}
+
+.paper__cite[open] summary::before {
+  content: "[−] ";
+}
+
+.paper__cite summary:hover {
+  color: var(--link);
+}
+
+.paper__bibtex {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border-left: 2px solid var(--rule);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.paper__colophon {
+  margin-top: 2.5rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  text-align: center;
+}
+
+.paper__colophon .katex {
+  font-size: 0.95em;
+}
+
+.paper__fnref {
+  border-bottom: none;
+  padding-bottom: 0;
+  text-decoration: none;
+}
+
+.paper__fnref sup {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.68em;
+  color: var(--link);
+  letter-spacing: 0.02em;
+  margin-left: 0.05em;
+}
+
+.paper__fnref:hover sup {
+  color: var(--link-hover);
+}
+
+.paper__fnref--star sup {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-style: normal;
+  font-size: 0.62em;
+  color: var(--ink-mute);
+  margin-left: 0.18em;
+  vertical-align: super;
+}
+
+.paper__fnref--star:hover sup {
+  color: var(--link);
+}
+
+.paper__footnotes {
+  margin-top: 3rem;
+  padding-top: 1.1rem;
+  position: relative;
+}
+
+.paper__footnotes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.paper__footnotes-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.paper__footnotes-list--star {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 0.6rem;
+}
+
+.paper__fn-symbol {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  color: var(--ink-mute);
+  margin-right: 0.4rem;
+  font-size: 0.95em;
+}
+
+.paper__footnotes-list li {
+  margin-bottom: 0.4rem;
+}
+
+.paper__footnotes-list li::marker {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78em;
+  color: var(--ink-mute);
+}
+
+.paper__footnotes-list li:target {
+  background: rgba(6, 69, 173, 0.06);
+  border-radius: 2px;
+  padding: 0.2rem 0.4rem;
+  margin-left: -0.4rem;
+}
+
+.paper__fn-back {
+  margin-left: 0.4rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.95em;
+  color: var(--ink-mute);
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.paper__fn-back:hover {
+  color: var(--link);
+}
+
+.paper__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.paper__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 0.96rem;
+}
+
+.paper__list--bib {
+  counter-reset: bibitem;
+}
+
+.paper__list--bib li {
+  counter-increment: bibitem;
+  padding-left: 2.4rem;
+  position: relative;
+}
+
+.paper__list--bib li::before {
+  content: "[" counter(bibitem) "]";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.74rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+}
+
+.paper__list--teased li {
+  display: block;
+  padding-top: 0.6rem;
+  padding-bottom: 0.7rem;
+}
+
+.paper__bib-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.paper__bib-row > a {
+  flex: 1;
+}
+
+.paper__list-teaser {
+  display: block;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-mute);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+  padding-right: 0.5rem;
+}
+
+.paper__sketches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  .paper__sketches {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@keyframes typing {
-  0% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #f5f7ff;
-  }
-  100% {
-    border-color: transparent;
-  }
+.paper__sketch-card {
+  display: block;
+  text-decoration: none;
+  border-bottom: none;
+  color: var(--ink-soft);
+  transition: transform 0.2s ease;
+}
+
+.paper__sketch-card:hover {
+  transform: translateY(-2px);
+  color: var(--link);
+}
+
+.paper__sketch-thumb {
+  height: 150px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background-color: #0e101a;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.paper__sketch-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.paper__sketch-thumb canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.25);
+  transform-origin: center center;
+  pointer-events: none;
+  display: block;
+}
+
+.paper__sketch-card:hover .paper__sketch-thumb {
+  border-color: var(--ink-mute);
+}
+
+.paper__sketch-label {
+  display: block;
+  text-align: center;
+  margin-top: 0.4rem;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.paper__see-all {
+  margin-left: auto;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  border-bottom: none;
+  font-weight: 400;
+}
+
+.paper__see-all:hover {
+  color: var(--link);
+}
+
+.paper__list li:last-child {
+  border-bottom: none;
+}
+
+.paper__list li a {
+  flex: 1;
+}
+
+.paper__list-meta {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.74rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.paper__elsewhere {
+  margin: 2.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule-soft);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 2;
+}
+
+.paper__elsewhere-sep {
+  color: var(--ink-mute);
+  margin: 0 0.25em;
+  opacity: 0.6;
 }

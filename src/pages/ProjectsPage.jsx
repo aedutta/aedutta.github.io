@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Section from '../components/Section.jsx';
 import './ProjectsPage.css';
 
@@ -13,6 +13,18 @@ const technicalProjects = [
     description: (
       <>
         Designed a 2-way superscalar out-of-order RV32IM processor in SystemVerilog with explicit register renaming (RAT/RRF/PRF/free list), 16-entry ROB, split load/store queue with store-to-load forwarding, and tournament branch predictor with BTB and RAS. Achieved a geometric-mean PD<sup>4</sup> of ~253 (3.6× over staff baseline) and a peak IPC of 1.325 on compression, ranking top 10 in the class design competition. Synthesized at 500 MHz with zero RVFI/Spike mismatches across all six benchmarks.
+      </>
+    ),
+  },
+  {
+    title: 'Drone Controller PCB (ECE 395)',
+    href: '/assets/docs/395 Final Report (1).pdf',
+    period: 'Jan 2026 – May 2026',
+    tags: ['Hardware', 'Embedded', 'RF'],
+    featured: true,
+    description: (
+      <>
+        Designed and built a handheld controller PCB (Skylink v1.0) that pairs with a custom quadcopter over a sub-GHz wireless link. Centered on an STM32L031K6T6 sampling two analog COM-09032 thumb-joysticks via on-chip ADC, reading a Bosch BMI270 IMU over I²C for tilt input, and transmitting 8-byte packets to the drone through a TI CC1101 transceiver. Reworked the matching network from 433 MHz to 315 MHz in-place to match the available antenna and verified the link end-to-end. Schematic, 4-layer PCB layout, and bare-metal STM32 HAL firmware all developed in-house.
       </>
     ),
   },
@@ -207,189 +219,41 @@ const projectLinks = [
   },
 ];
 
-const highSchoolOutreach = [
-  {
-    title: 'Online Physics Olympiad',
-    href: 'https://opho.physoly.tech/',
-    description:
-      'The biggest international student-run physics olympiad in the world. I co-founded the competition during COVID-19 and currently manage a team of 20+ volunteers.',
-  },
-  {
-    title: 'Everaise Academy',
-    href: 'https://www.everaise.org/course/physics',
-    description:
-      'A course designed to teach students the fundamentals of classical mechanics. I helped design the course content and wrote over 5 chapters of the published textbook.',
-  },
-  {
-    title: 'Solutions to Jaan Kalda\'s Handouts',
-    href: 'https://physoly.tech/kalda/',
-    description:
-      'Almost 300 pages of solutions and translations to Jaan Kalda\'s olympiad handouts. I served as the head author for several of the solution guides.',
-  },
-  {
-    title: 'Physoly',
-    href: 'https://discord.gg/phods',
-    description:
-      'An online community of 10k+ physics enthusiasts. We created resources/translations for physics olympiads, partnered with Discord, and curated a YouTube channel.',
-  },
-];
+const ProjectCard = ({ title, href, internal, description, period, venue, tags, featured }) => (
+  <article className={`projects__card${featured ? ' projects__card--featured' : ''}`}>
+    <div className="projects__card-header">
+      <h3 className="projects__card-title">
+        {internal ? (
+          <Link to={href}>{title}</Link>
+        ) : href ? (
+          <a href={href} target="_blank" rel="noreferrer">
+            {title}
+          </a>
+        ) : (
+          <span>{title}</span>
+        )}
+      </h3>
+      {period && <span className="projects__period">{period}</span>}
+    </div>
 
-const handouts = [
-  {
-    label: 'Lagrangian Handout',
-    href: '/assets/docs/Lagrangian_Handout.pdf',
-    description:
-      ' – A step-by-step guide tailored for olympiad physics problems using Lagrangian formalism. Last updated 2021.',
-  },
-  {
-    label: 'Surface Tension Handout (Partial)',
-    href: '/assets/docs/ST_handout.pdf',
-    description:
-      ' – Introduces surface tension theory with examples and practice problems. Last updated 2022.',
-  },
-];
-
-const researchProjects = [
-  {
-    label: 'Path Integral Formulation and Feynman Diagrams',
-    href: '/assets/docs/feynman.pdf',
-    description:
-      ' – Solutions that placed second in the 2022 Physics Unlimited Explorer Competition.',
-  },
-  {
-    label: 'An Analytic Model of Stable and Unstable Orbital Resonance',
-    href: '/assets/docs/resonance.pdf',
-    description:
-      ' – Theoretical astrophysics research accepted for presentation at LPSC 2021.',
-  },
-  {
-    label: 'Designing a Quantum Cascade Laser',
-    href: '/assets/docs/2021_PUEC.pdf',
-    description:
-      ' – Honorable mention solutions from the 2021 Physics Unlimited Explorer Competition.',
-  },
-  {
-    label: 'Channeling Across a Body-Centered Cubic Crystal',
-    href: '/assets/docs/BL4S_Document.pdf',
-    description:
-      ' – Shortlisted CERN Beamline for Schools experiment proposal (Top 20 globally).',
-  },
-];
-
-const translations = [
-  {
-    label: '2011 Indian Physics Olympiad',
-    href: '/assets/docs/INPhO_2011_Solutions.pdf',
-  },
-  {
-    label: '2012 Indian Physics Olympiad',
-    href: '/assets/docs/INPhO_2012_Solutions.pdf',
-  },
-  {
-    label: 'MIT OCW 8.03 Solutions Manual (Partial)',
-    href: '/assets/docs/MIT_OCW_8_03_Solutions_Manual.pdf',
-  },
-  {
-    label: 'MIT OCW 8.04 Solutions Manual (Partial)',
-    href: '/assets/docs/MIT_OCW_8_04_Solutions_Manual.pdf',
-  },
-];
-
-const notes = [
-  {
-    label: 'Laplace-Runge-Lenz Vector',
-    href: '/assets/docs/LRLvec.pdf',
-    description:
-      ' – Slides used for Everaise Academy office hours in 2022.',
-  },
-  {
-    label: 'AP Physics C: Electricity and Magnetism Notes',
-    href: '/assets/docs/AP_Physics_C_EM_Notes.pdf',
-    description: ' – Study notes compiled while preparing for the AP exam.',
-  },
-];
-
-
-const ProjectCard = ({ title, href, internal, description, period, venue, tags, featured }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isClamped, setIsClamped] = useState(false);
-  const descRef = useRef(null);
-
-  const checkClamped = useCallback(() => {
-    const el = descRef.current;
-    if (el) {
-      setIsClamped(el.scrollHeight > el.clientHeight + 1);
-    }
-  }, []);
-
-  useEffect(() => {
-    checkClamped();
-    window.addEventListener('resize', checkClamped);
-    return () => window.removeEventListener('resize', checkClamped);
-  }, [checkClamped]);
-  
-  return (
-    <article className={`projects__card ${isExpanded ? 'projects__card--expanded' : ''} ${featured ? 'projects__card--featured' : ''}`}>
-      <div className="projects__card-header">
-        <h3 className="projects__card-title">
-          {internal ? (
-            <Link to={href}>{title}</Link>
-          ) : (
-            href ? (
-              <a href={href} target="_blank" rel="noreferrer">
-                {title}
-              </a>
-            ) : (
-              <span>{title}</span>
-            )
-          )}
-        </h3>
-        {period && <span className="projects__period">{period}</span>}
+    {tags && tags.length > 0 && (
+      <div className="projects__tags">
+        {tags.map((tag) => (
+          <span key={tag} className={`projects__tag projects__tag--${tag.toLowerCase()}`}>
+            {tag}
+          </span>
+        ))}
       </div>
+    )}
 
-      {tags && tags.length > 0 && (
-        <div className="projects__tags">
-          {tags.map((tag) => (
-            <span key={tag} className={`projects__tag projects__tag--${tag.toLowerCase()}`}>
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-      
-      {venue && <div className="projects__venue">{venue}</div>}
+    {venue && <div className="projects__venue">{venue}</div>}
 
-      {description && (
-        <div className="projects__card-content">
-          <div className={`projects__card-desc${isClamped && !isExpanded ? ' projects__card-desc--clamped' : ''}`} ref={descRef}>
-            {description}
-          </div>
-          {(isClamped || isExpanded) && (
-            <button 
-              className="projects__toggle-btn"
-              onClick={() => setIsExpanded(!isExpanded)}
-              aria-label={isExpanded ? "Show less" : "Show more"}
-            >
-              {isExpanded ? "Show Less" : "Read More"}
-            </button>
-          )}
-        </div>
-      )}
-    </article>
-  );
-};
-
-const ListItem = ({ label, href, description }) => (
-  <li>
-    <a href={href} target="_blank" rel="noreferrer">
-      <strong>{label}</strong>
-    </a>
-    <span style={{ color: 'rgba(233, 236, 255, 0.7)' }}>{description}</span>
-  </li>
+    {description && <div className="projects__card-desc">{description}</div>}
+  </article>
 );
 
 const ProjectsPage = () => {
-  const [activeSection, setActiveSection] = useState('technical');
+  const [activeSection, setActiveSection] = useState('research');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -415,14 +279,8 @@ const ProjectsPage = () => {
   }, []);
 
   const tocLinks = [
-    { id: 'technical', label: 'Technical Projects' },
-    { id: 'publications', label: 'Publications' },
-    { id: 'research', label: 'Research' },
-    { id: 'outreach', label: 'Community & Outreach' },
-    { id: 'writings', label: 'Writings & Handouts' },
-    { id: 'old-research', label: 'Old Research' },
-    { id: 'translations', label: 'Translations' },
-    { id: 'notes', label: 'Notes & Slides' },
+    { id: 'research', label: 'Research & Publications' },
+    { id: 'technical', label: 'Projects' },
   ];
 
   return (
@@ -449,68 +307,23 @@ const ProjectsPage = () => {
       </aside>
 
       <div className="projects">
-        <Section id="technical" title="Technical Projects">
+        <Section id="research" title="Research & Publications">
+          <div className="projects__grid">
+            {researchItems.map((item, i) => (
+              <ProjectCard key={i} {...item} />
+            ))}
+            {publications.map((item, i) => (
+              <ProjectCard key={`pub-${i}`} {...item} />
+            ))}
+          </div>
+        </Section>
+
+        <Section id="technical" title="Projects">
           <div className="projects__grid">
             {technicalProjects.map((item, i) => (
               <ProjectCard key={i} {...item} />
             ))}
           </div>
-        </Section>
-
-        <Section id="publications" title="Publications">
-          <div className="projects__grid">
-            {publications.map((item, i) => (
-              <ProjectCard key={i} {...item} />
-            ))}
-          </div>
-        </Section>
-
-        <Section id="research" title="Research Experience">
-          <div className="projects__grid">
-            {researchItems.map((item, i) => (
-              <ProjectCard key={i} {...item} />
-            ))}
-          </div>
-        </Section>
-        
-        <Section id="outreach" title="Community & Outreach (High School)">
-          <div className="projects__grid">
-            {highSchoolOutreach.map((item, i) => (
-              <ProjectCard key={i} {...item} />
-            ))}
-          </div>
-        </Section>
-
-        <Section id="writings" title="Public Writings & Handouts">
-          <ul className="projects__list">
-            {handouts.map((item, i) => (
-              <ListItem key={i} {...item} />
-            ))}
-          </ul>
-        </Section>
-
-        <Section id="old-research" title="Old Research Projects">
-          <ul className="projects__list">
-            {researchProjects.map((item, i) => (
-              <ListItem key={i} {...item} />
-            ))}
-          </ul>
-        </Section>
-        
-        <Section id="translations" title="Translations & Solution Manuals">
-           <ul className="projects__list">
-            {translations.map((item, i) => (
-              <ListItem key={i} {...item} />
-            ))}
-          </ul>
-        </Section>
-
-         <Section id="notes" title="Notes & Slides">
-           <ul className="projects__list">
-            {notes.map((item, i) => (
-              <ListItem key={i} {...item} />
-            ))}
-          </ul>
         </Section>
       </div>
     </div>

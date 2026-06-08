@@ -43,16 +43,16 @@ const BlogPostPage = () => {
           <Component />
         </div>
         <div className="post-subscribe">
-          <hr style={{ margin: '3rem 0', borderColor: 'rgba(255,255,255,0.1)' }} />
-          <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Subscribe for updates</h3>
-          <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '1.5rem' }}>
+          <hr style={{ margin: '3rem 0 1.5rem', border: 'none', borderTop: '1px solid var(--rule)' }} />
+          <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', fontWeight: 600 }}>Subscribe for updates</h3>
+          <p style={{ color: 'var(--ink-soft)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
             If you enjoyed this post, join the list to get new essays in your inbox.
           </p>
           <SubscribeForm />
         </div>
         <div className="post-comments">
-          <hr style={{ margin: '3rem 0', borderColor: 'rgba(255,255,255,0.1)' }} />
-          <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Comments</h3>
+          <hr style={{ margin: '3rem 0 1.5rem', border: 'none', borderTop: '1px solid var(--rule)' }} />
+          <h3 style={{ margin: '0 0 1rem', fontSize: '1.1rem', fontWeight: 600 }}>Comments</h3>
           <Giscus />
         </div>
       </article>
