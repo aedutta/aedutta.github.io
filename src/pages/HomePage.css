@@ -316,6 +316,8 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0.7rem;
   margin-top: 0.3rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 200px;
 }
 
 @media (max-width: 600px) {
@@ -359,7 +361,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.25);
+  transform: translate(-50%, -50%) scale(0.5);
   transform-origin: center center;
   pointer-events: none;
   display: block;

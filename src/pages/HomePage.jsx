@@ -119,6 +119,7 @@ const LazySketchCard = ({ path, label, loadSketch }) => {
             className="paper__sketch-canvas"
             frameRate={30}
             paused={paused}
+            renderScale={0.5}
           />
         )}
       </div>

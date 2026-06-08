@@ -1,7 +1,14 @@
 import { useEffect, useRef } from 'react';
 import p5 from 'p5';
 
-const P5Canvas = ({ sketch, className, settings, frameRate, paused }) => {
+const P5Canvas = ({
+  sketch,
+  className,
+  settings,
+  frameRate,
+  paused,
+  renderScale,
+}) => {
   const containerRef = useRef(null);
   const instanceRef = useRef(null);
   const settingsRef = useRef(settings);
@@ -15,13 +22,16 @@ const P5Canvas = ({ sketch, className, settings, frameRate, paused }) => {
     if (containerRef.current && typeof sketch === 'function') {
       instance = new p5((p) => {
         sketch(p, settingsRef);
-        if (frameRate) {
-          const origSetup = p.setup;
-          p.setup = function patchedSetup() {
-            if (origSetup) origSetup.call(p);
-            p.frameRate(frameRate);
-          };
-        }
+        const origSetup = p.setup;
+        p.setup = function patchedSetup() {
+          if (renderScale && renderScale !== 1) {
+            const origCreate = p.createCanvas.bind(p);
+            p.createCanvas = (w, h, ...rest) =>
+              origCreate(Math.round(w * renderScale), Math.round(h * renderScale), ...rest);
+          }
+          if (origSetup) origSetup.call(p);
+          if (frameRate) p.frameRate(frameRate);
+        };
       }, containerRef.current);
       instanceRef.current = instance;
     }
@@ -31,7 +41,7 @@ const P5Canvas = ({ sketch, className, settings, frameRate, paused }) => {
       }
       instanceRef.current = null;
     };
-  }, [sketch, frameRate]);
+  }, [sketch, frameRate, renderScale]);
 
   useEffect(() => {
     const instance = instanceRef.current;
