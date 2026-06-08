@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import Tex from '../components/Tex.jsx';
+import P5Canvas from '../components/P5Canvas.jsx';
+import gameOfLifeSketch from '../sketches/gameOfLife.js';
+import isingSketch from '../sketches/ising.js';
+import flowFieldSketch from '../sketches/flowField.js';
+import cardioidSketch from '../sketches/cardioid.js';
 import './HomePage.css';
 
 const selectedWork = [
@@ -42,11 +48,51 @@ const selectedWork = [
 ];
 
 const featuredSketches = [
-  { path: 'game-of-life', label: 'Game of Life' },
-  { path: 'ising', label: 'Ising Model' },
-  { path: 'flow-field', label: 'Flow Field' },
-  { path: 'cardioid', label: 'Cardioid Caustics' },
+  { path: 'game-of-life', label: 'Game of Life', sketch: gameOfLifeSketch },
+  { path: 'ising', label: 'Ising Model', sketch: isingSketch },
+  { path: 'flow-field', label: 'Flow Field', sketch: flowFieldSketch },
+  { path: 'cardioid', label: 'Cardioid Caustics', sketch: cardioidSketch },
 ];
+
+const LazySketchCard = ({ path, label, sketch }) => {
+  const ref = useRef(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setShouldAnimate(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <Link ref={ref} to={`/animations/${path}`} className="paper__sketch-card">
+      <div
+        className="paper__sketch-thumb"
+        style={
+          shouldAnimate
+            ? undefined
+            : { backgroundImage: `url(/assets/images/sketches/${path}.png)` }
+        }
+        aria-hidden="true"
+      >
+        {shouldAnimate && <P5Canvas sketch={sketch} className="paper__sketch-canvas" />}
+      </div>
+      <span className="paper__sketch-label">{label}</span>
+    </Link>
+  );
+};
 
 const blogModules = import.meta.glob('./blogs/*.jsx', { eager: true });
 const blogRawModules = import.meta.glob('./blogs/*.jsx', {
@@ -203,15 +249,8 @@ const HomePage = () => (
         </Link>
       </h2>
       <div className="paper__sketches">
-        {featuredSketches.map(({ path, label }) => (
-          <Link key={path} to={`/animations/${path}`} className="paper__sketch-card">
-            <div
-              className="paper__sketch-thumb"
-              style={{ backgroundImage: `url(/assets/images/sketches/${path}.png)` }}
-              aria-hidden="true"
-            />
-            <span className="paper__sketch-label">{label}</span>
-          </Link>
+        {featuredSketches.map((s) => (
+          <LazySketchCard key={s.path} {...s} />
         ))}
       </div>
     </section>
