@@ -296,6 +296,8 @@ const HomePage = () => (
       <span className="paper__elsewhere-sep"> · </span>
       <a href="https://www.linkedin.com/in/ashmitdutta/" target="_blank" rel="noreferrer">linkedin</a>
       <span className="paper__elsewhere-sep"> · </span>
+      <a href="https://scholar.google.com/citations?user=VSpPcv4AAAAJ&hl=en" target="_blank" rel="noreferrer">scholar</a>
+      <span className="paper__elsewhere-sep"> · </span>
       <a href="/assets/docs/resume_ashmit.pdf" target="_blank" rel="noreferrer">résumé ↗</a>
       <span className="paper__elsewhere-sep"> · </span>
       <Link to="/blog">blog</Link>
