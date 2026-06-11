@@ -19,6 +19,12 @@ const handouts = [
     description:
       'Introduces surface tension theory with examples and practice problems. Last updated 2022.',
   },
+  {
+    label: 'Geometric Optics Handout',
+    href: '/assets/docs/geoptichandout.pdf',
+    description:
+      'Covers geometric optics for olympiad physics with worked examples and practice problems.',
+  },
 ];
 
 const translations = [
@@ -37,6 +43,10 @@ const translations = [
   {
     label: 'MIT OCW 8.04 Solutions Manual (partial)',
     href: '/assets/docs/MIT_OCW_8_04_Solutions_Manual.pdf',
+  },
+  {
+    label: "Jaan Kalda's Circuits Solutions Manual (partial)",
+    href: '/assets/docs/Kalda_Circuits_Solutions_Manual.pdf',
   },
 ];
 
