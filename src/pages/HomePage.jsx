@@ -170,8 +170,7 @@ const HomePage = () => (
         <span className="paper__section-num">§1.</span> About
       </h2>
       <p className="paper__lede">
-        <span className="paper__dropcap">I</span>
-        'm a senior at UIUC studying computer engineering. Most of what I do
+        I'm a senior at UIUC studying computer engineering. Most of what I do
         lives between autonomy, machine learning, and computer systems. I'm
         currently an ML engineering intern at <b>Nablon AI</b> and a researcher
         in Prof.{' '}
