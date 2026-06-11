@@ -34,10 +34,10 @@ export default () => (
     <p>
       In classical computing this question has a famous answer. Any logic
       circuit, no matter how complicated, can be built out of AND, OR, and NOT.
-      Three gates and you’re done — they form a basis for everything. So the
+      Three gates form a basis for everything. So the
       natural question is whether quantum computing has its own version of this,
       and that’s exactly what the Solovay–Kitaev theorem answers. The catch is
-      that quantum gates live in a continuum (they’re unitary matrices, and
+      that quantum gates live in a <em>continuum</em> (they’re unitary matrices, and
       there are uncountably many of them), so a finite gate set can never hit
       every gate exactly. The best you can hope for is approximation. The
       surprise is how cheap that approximation turns out to be.
