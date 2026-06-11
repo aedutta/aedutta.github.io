@@ -48,6 +48,12 @@ const translations = [
     label: "Jaan Kalda's Circuits Solutions Manual (partial)",
     href: '/assets/docs/Kalda_Circuits_Solutions_Manual.pdf',
   },
+  {
+    label: '2020 Physics Cup — Solutions',
+    href: '/assets/docs/2020_Physics_Cup_Solutions.pdf',
+    description:
+      'My solutions to the 2020 Physics Cup, run by Prof. Jaan Kalda. No public solutions on the competition website are available yet.',
+  },
 ];
 
 const oldResearch = [
