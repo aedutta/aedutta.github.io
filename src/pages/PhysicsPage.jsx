@@ -2,6 +2,12 @@ import './PhysicsPage.css';
 
 const handouts = [
   {
+    label: 'Everaise Academy Physics Textbook',
+    href: '/assets/docs/Everaise_Physics_Textbook.pdf',
+    description:
+      'The published classical mechanics textbook for Everaise Academy. Co-authored and contributed 5+ chapters.',
+  },
+  {
     label: 'Lagrangian Handout',
     href: '/assets/docs/Lagrangian_Handout.pdf',
     description:
