@@ -150,52 +150,6 @@ const technicalProjects = [
   },
 ];
 
-const publications = [
-  {
-    title: 'The Challenge of Teaching Reasoning to LLMs Without RL or Distillation',
-    venue: 'ICML AI for Math Workshop, 2025',
-    href: 'https://arxiv.org/abs/2507.09850',
-    description: '',
-  },
-  {
-    title: 'A Novel AI-Based Technique for 3D Shape Acquisition of Confectionery Sunflower Seeds and Associated Shape Descriptors',
-    venue: '21st International Sunflower Conference, 2023',
-    href: 'https://scholar.google.com/scholar_lookup?title=A%20novel%20AI-based%20technique%20for%203d%20shape%20acquisition%20of%20confectionery%20sunflower%20seeds%20%20and%20associated%20shape%20descriptors', // Using previous link or similar
-    description: '',
-  },
-];
-
-const researchItems = [
-  {
-    title: 'ML Research Intern / UChicago Data Science Institute',
-    href: 'https://datascience.uchicago.edu/people/ashmit-dutta-he-him/',
-    period: 'Jun 2024 – Aug 2024',
-    description: (
-      <>
-        Summer research program to build multi-modal GNNs on HPC clusters for Fermilab’s Exa.TrkX neutrino reconstruction project.
-      </>
-    ),
-  },
-  {
-    title: 'WaggleNet',
-    href: 'https://www.wagglenet.org/',
-    description: (
-      <>
-        Undergraduate researcher under Prof. Christopher Schmitz. We design, build, develop and deploy IoT solutions for beekeepers. I worked on the audio team to combine hardware and software to get audio input from bees and predict their behaviors using machine learning models.
-      </>
-    ),
-  },
-  {
-    title: 'Illinois Mathematics Lab',
-    href: 'https://iml.math.illinois.edu/',
-    description: (
-      <>
-        Research scholar working on a semester-long project on <a href="/assets/docs/IML_SP24.pdf" target="_blank" rel="noreferrer">Quantum Noise and Simulation</a> (Spring 2024).
-      </>
-    ),
-  },
-];
-
 const projectLinks = [
   { 
     title: 'Analog Spectrum Viewer',
@@ -253,7 +207,7 @@ const ProjectCard = ({ title, href, internal, description, period, venue, tags, 
 );
 
 const ProjectsPage = () => {
-  const [activeSection, setActiveSection] = useState('research');
+  const [activeSection, setActiveSection] = useState('technical');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -279,7 +233,6 @@ const ProjectsPage = () => {
   }, []);
 
   const tocLinks = [
-    { id: 'research', label: 'Research & Publications' },
     { id: 'technical', label: 'Projects' },
   ];
 
@@ -307,17 +260,6 @@ const ProjectsPage = () => {
       </aside>
 
       <div className="projects">
-        <Section id="research" title="Research & Publications">
-          <div className="projects__grid">
-            {researchItems.map((item, i) => (
-              <ProjectCard key={i} {...item} />
-            ))}
-            {publications.map((item, i) => (
-              <ProjectCard key={`pub-${i}`} {...item} />
-            ))}
-          </div>
-        </Section>
-
         <Section id="technical" title="Projects">
           <div className="projects__grid">
             {technicalProjects.map((item, i) => (

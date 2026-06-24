@@ -1,0 +1,246 @@
+.research {
+  max-width: 76ch;
+  margin: 0 auto;
+  padding: 0.75rem 0 2.5rem;
+}
+
+.research__masthead {
+  margin-bottom: 1.5rem;
+}
+
+.research__title {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0 0.3rem;
+  line-height: 1.1;
+}
+
+.research__subtitle {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0.35rem 0 0;
+  line-height: 1.4;
+}
+
+.research__section {
+  margin: 2rem 0;
+}
+
+.research__heading {
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  padding-bottom: 0.4rem;
+  margin: 0 0 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+
+/* --- Publications: figure to the side --- */
+.research__pubs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: pub;
+}
+
+.research__pub {
+  display: grid;
+  grid-template-columns: auto 220px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.research__pub:last-child {
+  border-bottom: none;
+}
+
+.research__pub-num {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.74rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  padding-top: 0.25rem;
+}
+
+.research__fig {
+  width: 220px;
+  height: 160px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.research__fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.research__fig--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.research__fig-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  white-space: pre-line;
+}
+
+.research__pub-body {
+  min-width: 0;
+}
+
+.research__pub-title {
+  margin: 0 0 0.25rem;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.research__pub-title a {
+  color: var(--link);
+  border-bottom: 1px solid rgba(6, 69, 173, 0.25);
+}
+
+.research__pub-title a:hover {
+  color: var(--link-hover);
+  border-bottom-color: currentColor;
+}
+
+.research__pub-authors {
+  margin: 0 0 0.1rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.research__pub-venue {
+  margin: 0 0 0.4rem;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-mute);
+}
+
+.research__pub-abstract {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.research__pub-links {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8rem;
+}
+
+.research__pub-links a {
+  color: var(--link);
+  border-bottom: none;
+}
+
+.research__pub-links a:hover {
+  color: var(--link-hover);
+}
+
+@media (max-width: 600px) {
+  .research__pub {
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+  }
+
+  .research__fig {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 220px;
+    margin-top: 0.5rem;
+    order: 3;
+  }
+}
+
+/* --- Research experience --- */
+.research__exp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.research__exp-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.research__exp-item:last-child {
+  border-bottom: none;
+}
+
+.research__exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.research__exp-title {
+  margin: 0;
+  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.research__exp-title a {
+  color: var(--link);
+  border-bottom: 1px solid rgba(6, 69, 173, 0.25);
+}
+
+.research__exp-title a:hover {
+  color: var(--link-hover);
+  border-bottom-color: currentColor;
+}
+
+.research__exp-period {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.research__exp-org {
+  margin: 0.1rem 0 0.35rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-mute);
+}
+
+.research__exp-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.research__exp-desc a {
+  color: var(--link);
+}

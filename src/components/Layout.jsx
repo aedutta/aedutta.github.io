@@ -24,12 +24,16 @@ const Layout = () => {
             Ashmit Dutta
           </NavLink>
           <div className="layout__links">
-            <NavLink to="/blog" className={getLinkClass}>
-              Blog
+            <NavLink to="/research" className={getLinkClass}>
+              Research
             </NavLink>
             <span aria-hidden="true">·</span>
             <NavLink to="/work" className={getLinkClass}>
               Work
+            </NavLink>
+            <span aria-hidden="true">·</span>
+            <NavLink to="/blog" className={getLinkClass}>
+              Blog
             </NavLink>
             <span aria-hidden="true">·</span>
             <NavLink to="/animations" className={getLinkClass}>

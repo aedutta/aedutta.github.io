@@ -5,6 +5,7 @@ import animationsRoutes from './pages/animations/routes.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage.jsx'));
+const ResearchPage = lazy(() => import('./pages/ResearchPage.jsx'));
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage.jsx'));
 const AnimationsPage = lazy(() => import('./pages/AnimationsPage.jsx'));
@@ -25,6 +26,7 @@ const App = () => (
     <Route path="record/:slug" element={wrap(SketchRecorder)} />
     <Route element={<Layout />}>
       <Route index element={wrap(HomePage)} />
+      <Route path="research" element={wrap(ResearchPage)} />
       <Route path="work" element={wrap(ProjectsPage)} />
       <Route path="blog" element={wrap(BlogPage)} />
       <Route path="blog/:slug" element={wrap(BlogPostPage)} />

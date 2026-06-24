@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Tex from '../components/Tex.jsx';
+import { publications } from '../data/research.jsx';
 import './HomePage.css';
 
 const selectedWork = [
@@ -33,12 +34,6 @@ const selectedWork = [
     teaser: 'ROS 2 stack, min-snap planner, YOLOv8 gate segmentation',
     meta: 'Fall 2025',
     href: 'https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit',
-  },
-  {
-    title: 'RISC-V operating system',
-    teaser: 'Unix-like in C: paging, scheduler, filesystem, Sv39 virtual memory',
-    meta: 'ECE 391',
-    href: '/work',
   },
 ];
 
@@ -128,6 +123,24 @@ const LazySketchCard = ({ path, label, loadSketch }) => {
   );
 };
 
+const HomePubFig = ({ src, label }) => {
+  const [failed, setFailed] = useState(!src);
+  if (failed) {
+    return (
+      <div className="paper__pub-fig paper__pub-fig--placeholder" aria-hidden="true">
+        <span className="paper__pub-fig-label">{label}</span>
+      </div>
+    );
+  }
+  return (
+    <div className="paper__pub-fig">
+      <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} />
+    </div>
+  );
+};
+
+const featuredResearch = publications.slice(0, 2);
+
 const blogModules = import.meta.glob('./blogs/*.jsx', { eager: true });
 const blogRawModules = import.meta.glob('./blogs/*.jsx', {
   query: '?raw',
@@ -172,29 +185,19 @@ const HomePage = () => (
       <p className="paper__lede">
         I'm a senior at UIUC studying computer engineering. Most of what I do
         lives between autonomy, machine learning, and computer systems. I'm
-        currently an ML engineering intern at <b>Nablon AI</b> and a researcher
+        currently an AI evals intern at <a href="https://nablon.ai/researchers"><b>Nablon AI</b></a> and a researcher
         in Prof.{' '}
         <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">
           Huan Zhang
         </a>
-        's Assured and Trustworthy AI Research Lab, working on neural network
-        verification (
-        <a
-          href="https://github.com/Verified-Intelligence/auto_LiRPA"
-          target="_blank"
-          rel="noreferrer"
-        >
-          auto_LiRPA
-        </a>
-        ,{' '}
+        's Assured and Trustworthy AI Research Lab, working on{' '}
         <a
           href="https://github.com/Verified-Intelligence/alpha-beta-CROWN"
           target="_blank"
           rel="noreferrer"
         >
-          <Tex>{'\\alpha\\text{-}\\beta\\text{-}\\mathrm{CROWN}'}</Tex>
-        </a>
-        ).
+          neural network verification
+        </a>.
         <a href="#fn-1" id="fnref-1" className="paper__fnref" aria-describedby="footnote-label">
           <sup>1</sup>
         </a>
@@ -207,7 +210,7 @@ const HomePage = () => (
         <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">
           ICML 2025 workshop paper
         </a>{' '}
-        about finetuning chain-of-thought in LLMs.
+        about finetuning chain-of-thought in LLMs with NVIDIA's <a href="https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/writeups/nemoskills-1st-place-solution-nemoskills" target="_blank" rel="noreferrer">NemoSkills</a> team.
       </p>
       <p>
         I like writing fast code and shipping real systems:{' '}
@@ -225,7 +228,34 @@ const HomePage = () => (
 
     <section className="paper__section">
       <h2 className="paper__heading">
-        <span className="paper__section-num">§2.</span> Work
+        <span className="paper__section-num">§2.</span> Research
+        <Link to="/research" className="paper__see-all">
+          see all →
+        </Link>
+      </h2>
+      <ol className="paper__pubs">
+        {featuredResearch.map((p) => (
+          <li key={p.slug} className="paper__pub">
+            <a href={p.href} target="_blank" rel="noreferrer" className="paper__pub-fig-link">
+              <HomePubFig src={p.figure} label={p.figureLabel} />
+            </a>
+            <div className="paper__pub-body">
+              <a href={p.href} target="_blank" rel="noreferrer" className="paper__pub-title">
+                {p.title}
+              </a>
+              <span className="paper__pub-meta">
+                {p.venue}
+                {p.year ? `, ${p.year}` : ''}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section className="paper__section">
+      <h2 className="paper__heading">
+        <span className="paper__section-num">§3.</span> Work
         <Link to="/work" className="paper__see-all">
           see all →
         </Link>
@@ -255,7 +285,7 @@ const HomePage = () => (
     {writing.length > 0 && (
       <section className="paper__section">
         <h2 className="paper__heading">
-          <span className="paper__section-num">§3.</span> Writing
+          <span className="paper__section-num">§4.</span> Writing
           <Link to="/blog" className="paper__see-all">
             see all →
           </Link>
@@ -276,7 +306,7 @@ const HomePage = () => (
 
     <section className="paper__section">
       <h2 className="paper__heading">
-        <span className="paper__section-num">§4.</span> Sketches
+        <span className="paper__section-num">§5.</span> Sketches
         <Link to="/animations" className="paper__see-all">
           see all →
         </Link>
@@ -298,6 +328,8 @@ const HomePage = () => (
       <a href="https://scholar.google.com/citations?user=VSpPcv4AAAAJ&hl=en" target="_blank" rel="noreferrer">scholar</a>
       <span className="paper__elsewhere-sep"> · </span>
       <a href="/assets/docs/resume_ashmit.pdf" target="_blank" rel="noreferrer">résumé ↗</a>
+      <span className="paper__elsewhere-sep"> · </span>
+      <Link to="/research">research</Link>
       <span className="paper__elsewhere-sep"> · </span>
       <Link to="/blog">blog</Link>
       <span className="paper__elsewhere-sep"> · </span>
