@@ -68,7 +68,7 @@ section button:hover {
 }
 
 .animations-header h2 {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -170,7 +170,7 @@ section button:hover {
 
 .animation-content h3 {
   margin: 0;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.02rem;
   color: var(--ink);
   font-weight: 500;

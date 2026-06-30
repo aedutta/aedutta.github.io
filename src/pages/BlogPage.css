@@ -1,5 +1,5 @@
 .blog-container {
-  max-width: 680px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 1rem 0 3rem;
 }
@@ -11,7 +11,7 @@
 }
 
 .blog-header h2 {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -39,7 +39,7 @@
   border-radius: 3px;
   padding: 0.55rem 0.85rem;
   color: var(--ink);
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   transition: border-color 0.15s;
 }
@@ -115,7 +115,7 @@
 }
 
 .post-title-full {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 600;
   margin: 0.35rem 0 0;
@@ -181,7 +181,7 @@
 
 .post-title-list {
   margin: 0 0 0.5rem;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
   color: var(--ink);

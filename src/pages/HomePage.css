@@ -1,29 +1,86 @@
 .paper {
-  max-width: 62ch;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0.75rem 0 2.5rem;
 }
 
 .paper__masthead {
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.75rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.paper__masthead-main {
+  min-width: 0;
+}
+
+.paper__social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  flex-shrink: 0;
+}
+
+.paper__social a {
+  color: var(--ink);
+  border-bottom: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  transition: color 0.15s ease;
+}
+
+.paper__social a:hover {
+  color: var(--accent);
+}
+
+.paper__social-arrow {
+  font-size: 0.85em;
+  color: var(--ink-mute);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.paper__social a:hover .paper__social-arrow {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+@media (max-width: 560px) {
+  .paper__social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.4rem 1rem;
+  }
 }
 
 .paper__title {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0.25rem 0 0.3rem;
-  line-height: 1.1;
+  font-family: var(--font-accent);
+  font-size: clamp(2.9rem, 7vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.5rem;
+  line-height: 0.9;
 }
 
 .paper__subtitle {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
-  font-size: 0.95rem;
+  font-family: var(--font-accent);
+  font-size: 1.05rem;
   font-style: italic;
   color: var(--ink-soft);
-  margin: 0.35rem 0 0;
-  line-height: 1.4;
+  margin: 0.5rem 0 0;
+  line-height: 1.35;
   white-space: nowrap;
 }
 
@@ -35,26 +92,266 @@
 }
 
 .paper__section {
-  margin: 1.6rem 0;
+  margin: 2.9rem 0;
+}
+
+.paper__statement {
+  display: flex;
+  justify-content: center;
+  margin: 3.4rem 0;
+}
+
+.paper__chip-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 560px;
+}
+
+.paper__chip-frame {
+  perspective: 1100px;
+  cursor: pointer;
+  border-radius: 12px;
+  outline: none;
+}
+
+.paper__chip-frame:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.paper__chip-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--rule);
+}
+
+.paper__chip-readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5ch;
+  min-width: 0;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.paper__chip-stat {
+  flex-shrink: 0;
+  align-self: center;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3a9a5a;
+  box-shadow: 0 0 4px rgba(58, 154, 90, 0.7);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.paper__chip-stat.is-on {
+  background: #e0a33a;
+  box-shadow: 0 0 6px rgba(224, 163, 58, 0.9);
+  animation: chip-stat-pulse 1s ease-in-out infinite;
+}
+
+.paper__chip-readout-prompt {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.paper__chip-readout-val {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paper__chip-readout-cursor {
+  flex-shrink: 0;
+  color: var(--ink-mute);
+  animation: chip-blink 1s steps(1) infinite;
+}
+
+.paper__chip-hint {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+@keyframes chip-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes chip-stat-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(224, 163, 58, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(224, 163, 58, 0.4);
+  }
+}
+
+@media (max-width: 480px) {
+  .paper__chip-hint {
+    display: none;
+  }
+}
+
+.paper__chip-tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 32%;
+  position: relative;
+  display: block;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.22s ease-out;
+  will-change: transform;
+}
+
+.paper__chip {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+}
+
+.paper__chip-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.05) 30%,
+    transparent 56%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.paper__chip-stage:hover .paper__chip-glare,
+.paper__chip-stage:focus-visible .paper__chip-glare {
+  opacity: 1;
+}
+
+.paper__chip-via {
+  transition: fill 0.2s ease;
+}
+
+.paper__chip.is-energized .paper__chip-via {
+  animation: chip-via-flash 0.6s ease-out;
+}
+
+.paper__chip-led {
+  fill: #3a1411;
+  transition: fill 0.2s ease, filter 0.2s ease;
+}
+
+.paper__chip-led.is-on {
+  fill: #ff5141;
+  filter: drop-shadow(0 0 5px rgba(255, 90, 70, 0.95));
+}
+
+@keyframes chip-via-flash {
+  0% {
+    fill: #c79a57;
+  }
+  35% {
+    fill: #ffe6b0;
+  }
+  100% {
+    fill: #c79a57;
+  }
+}
+
+.paper__chip-silk {
+  fill: #e6e6ea;
+  opacity: 0.5;
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.paper__chip-mark {
+  fill: #bdbdc4;
+  font-family: 'Inconsolata', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.paper__chip-part {
+  fill: #9a9aa2;
+  font-family: 'Inconsolata', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.paper__chip-sub {
+  fill: #6a6a72;
+  font-family: 'Inconsolata', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+.paper__chip-pulse {
+  animation: chip-pulse 2.8s linear infinite;
+}
+
+@keyframes chip-pulse {
+  from {
+    stroke-dashoffset: 272;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper__chip-pulse {
+    display: none;
+  }
 }
 
 .paper__heading {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
-  font-size: 1.1rem;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
   font-weight: 600;
-  margin: 0 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--rule);
   color: var(--ink);
 }
 
 .paper__section-num {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--ink-mute);
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
 }
 
 .paper__see-all {
@@ -80,7 +377,7 @@
 
 .paper__dropcap {
   float: left;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 2.9rem;
   line-height: 0.92;
@@ -169,7 +466,7 @@
 }
 
 .paper__fnref--star sup {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-style: normal;
   font-size: 0.62em;
   color: var(--ink-mute);
@@ -212,7 +509,7 @@
 }
 
 .paper__fn-symbol {
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   color: var(--ink-mute);
   margin-right: 0.4rem;
   font-size: 0.95em;
@@ -302,7 +599,7 @@
 
 .paper__list-teaser {
   display: block;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.88rem;
   color: var(--ink-mute);
@@ -379,7 +676,7 @@
 
 .paper__pub-title {
   display: block;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.98rem;
   font-weight: 600;
   line-height: 1.3;
@@ -392,7 +689,7 @@
 
 .paper__pub-meta {
   display: block;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.84rem;
   color: var(--ink-mute);
@@ -463,7 +760,7 @@
   display: block;
   text-align: center;
   margin-top: 0.4rem;
-  font-family: 'EB Garamond', Palatino, Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.82rem;
   line-height: 1.3;
 }
