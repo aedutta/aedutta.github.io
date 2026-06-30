@@ -104,6 +104,12 @@ const community = [
       'The largest international student-run physics olympiad. Co-founded during COVID-19; currently manage a team of 20+ volunteers and a 22k+ community.',
   },
   {
+    title: "AwesomeMath — Physics Level 3 Olympiad Preparation",
+    href: 'https://www.awesomemath.org/product/physics-level-3-online/',
+    description:
+      'Teaching assistant for the L3 Physics Olympiad Preparation course.',
+  },
+  {
     title: 'Everaise Academy',
     href: 'https://www.everaise.org/course/physics',
     description:
