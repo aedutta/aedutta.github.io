@@ -16,6 +16,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Set theme before first paint so there's no flash of the wrong mode. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved || 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Splash that paints before React hydrates so first paint isn't a blank screen.
          React's createRoot().render() replaces #root's children when it mounts. -->
     <style>
@@ -23,7 +34,13 @@
         color-scheme: light;
         background: #faf8f3;
       }
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        background: #181614;
+      }
       html, body { margin: 0; padding: 0; background: #faf8f3; color: #1c1c1f; }
+      :root[data-theme='dark'] html, :root[data-theme='dark'] body { background: #181614; color: #ece7dd; }
+      :root[data-theme='dark'] #splash p { color: #c3bdb1; }
       #splash {
         max-width: 680px;
         margin: 4.5rem auto 0;
