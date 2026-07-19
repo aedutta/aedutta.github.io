@@ -253,7 +253,7 @@ const HomePage = () => (
         <div className="ds-desc">
           <p className="paper__lede">
             I'm a senior computer engineer at UIUC, drawn to problems where the
-            hardware meets the model — autonomy, machine learning, and systems.
+            hardware meets the model — autonomy, machine learning, and systems. Currently working at an AI startup. 
             <a href="#fn-1" id="fnref-1" className="paper__fnref" aria-describedby="footnote-label">
               <sup>1</sup>
             </a>
