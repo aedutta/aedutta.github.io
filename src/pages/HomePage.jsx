@@ -182,7 +182,8 @@ const features = [
   <>AI evals intern at <a href="https://nablon.ai/researchers"><b>Nablon&nbsp;AI</b></a></>,
   <>Neural-network verification, <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Assured&nbsp;&amp;&nbsp;Trustworthy&nbsp;AI&nbsp;Lab</a></>,
   <>Co-author, <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">ICML&nbsp;2025 workshop</a> (NVIDIA Nemo)</>,
-  <>Founder, <a href="https://opho.physoly.tech/" target="_blank" rel="noreferrer">Online Physics Olympiad</a> — 20k+ members</>,
+  <>2×&nbsp; track prize winner, <a href="https://github.com/aedutta/shot-spot-treehacks-26/" target="_blank" rel="noreferrer">Stanford&nbsp;TreeHacks&nbsp;2026</a></>,
+  <>Founder, <a href="https://opho.physoly.tech/" target="_blank" rel="noreferrer">Online Physics Olympiad</a> (20k+ members)</>,
   <>Prior: <b>John Deere</b> SWE · <b>UChicago DSI</b> / Fermilab</>,
 ];
 
@@ -251,40 +252,23 @@ const HomePage = () => (
         </div>
         <div className="ds-desc">
           <p className="paper__lede">
-            I'm a senior in computer engineering at UIUC, working between
-            autonomy, machine learning, and systems. I'm an AI evals intern at{' '}
-            <a href="https://nablon.ai/researchers"><b>Nablon AI</b></a> and a researcher
-            in Prof.{' '}
-            <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">
-              Huan Zhang
-            </a>
-            's lab on{' '}
+            I'm a senior computer engineer at UIUC, drawn to problems where the
+            hardware meets the model — autonomy, machine learning, and systems.
+            Lately that's meant AI evaluation at a startup and{' '}
             <a
               href="https://github.com/Verified-Intelligence/alpha-beta-CROWN"
               target="_blank"
               rel="noreferrer"
             >
-              neural network verification
-            </a>.
+              neural-network verification
+            </a> at a research lab.
             <a href="#fn-1" id="fnref-1" className="paper__fnref" aria-describedby="footnote-label">
               <sup>1</sup>
             </a>
           </p>
           <p>
-            Previously a software engineer at <b>John Deere</b> and an ML research
-            intern at the <b>UChicago Data Science Institute</b> (Fermilab's{' '}
-            <i>Exa.TrkX</i>), and a co-author on an{' '}
-            <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">
-              ICML 2025 workshop paper
-            </a>{' '}
-            with NVIDIA's <a href="https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/writeups/nemoskills-1st-place-solution-nemoskills" target="_blank" rel="noreferrer">Nemo</a> team.
-          </p>
-          <p>
-            In high school, I co-founded the{' '}
-            <a href="https://opho.physoly.tech/" target="_blank" rel="noreferrer">
-              Online Physics Olympiad
-            </a>
-            , now a 20k+ member community.
+            Before that, I did software engineering, ML research at a national lab/REU, built my own operating system and CPU from scratch, and founded + organize a
+            physics olympiad that got a little out of hand.
           </p>
         </div>
       </div>
