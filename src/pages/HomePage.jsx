@@ -252,7 +252,7 @@ const HomePage = () => (
         </div>
         <div className="ds-desc">
           <p className="paper__lede">
-            I'm a senior computer engineer at UIUC, drawn to problems where the
+            I'm a senior computer engineer at UIUC, drawn to problems where
             hardware meets the model — autonomy, machine learning, and systems. Currently working at an AI startup. 
             <a href="#fn-1" id="fnref-1" className="paper__fnref" aria-describedby="footnote-label">
               <sup>1</sup>
@@ -270,7 +270,7 @@ const HomePage = () => (
           </p>
           <p>
             For fun I've built a Unix-like operating system, an out-of-order
-            CPU, and an autonomous drone from scratch.
+            CPU, and an autonomous drone from scratch. I also founded a physics olympiad that got a little out of hand.
           </p>
         </div>
       </div>
