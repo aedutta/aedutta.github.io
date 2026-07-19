@@ -173,9 +173,6 @@ const keySpecs = [
   { param: 'Type', value: 'Computer Engineer', cond: 'B.S. ECE, senior' },
   { param: 'Institution', value: 'UIUC', cond: 'Urbana–Champaign' },
   { param: 'Domain', value: 'Autonomy · ML · Systems', cond: 'digital + analog' },
-  { param: 'Operating Temp', value: 'Champaign-rated', cond: 'stable down to −10 °C' },
-  { param: 'Research', value: 'NN Verification', cond: 'Assured & Trustworthy AI Lab' },
-  { param: 'Coolant', value: 'Korean BBQ', cond: 'applied under load' },
 ];
 
 const features = [
