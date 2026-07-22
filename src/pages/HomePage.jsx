@@ -169,12 +169,6 @@ const writing = Object.entries(blogModules)
   .sort((a, b) => new Date(b.date) - new Date(a.date))
   .slice(0, 3);
 
-const keySpecs = [
-  { param: 'Type', value: 'Computer Engineer', cond: 'B.S. ECE, senior' },
-  { param: 'Institution', value: 'UIUC', cond: 'Urbana–Champaign' },
-  { param: 'Domain', value: 'Autonomy · ML · Systems', cond: 'digital + analog' },
-];
-
 const features = [
   <>AI evals intern at <a href="https://nablon.ai/researchers"><b>Nablon&nbsp;AI</b></a></>,
   <>Neural-network verification, <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Assured&nbsp;&amp;&nbsp;Trustworthy&nbsp;AI&nbsp;Lab</a></>,
@@ -217,21 +211,6 @@ const HomePage = () => (
         </a>
       </nav>
     </header>
-
-    <section className="ds-specs" aria-label="key specifications">
-      <div className="ds-specs__caption">Key Specifications</div>
-      <dl className="ds-specs__grid">
-        {keySpecs.map(({ param, value, cond }) => (
-          <div className="ds-specs__cell" key={param}>
-            <dt className="ds-specs__param">{param}</dt>
-            <dd className="ds-specs__value">
-              {value}
-              <span className="ds-specs__cond">{cond}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </section>
 
     <section className="paper__section">
       <h2 className="paper__heading">
