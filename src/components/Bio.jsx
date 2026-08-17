@@ -51,7 +51,7 @@ export default function Bio() {
             LLMs Without RL or Distillation
           </em>
         </a>{' '}
-        with NVIDIA researchers, published at an ICML 2025 workshop.
+        with NVIDIA researchers, published at the ICML 2025 AI for Math Workshop.
       </p>
 
       <p>
