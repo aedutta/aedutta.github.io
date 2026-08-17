@@ -1,0 +1,175 @@
+\documentclass[letterpaper,11pt]{article}
+ 
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+ 
+% Define a nice purple for links
+\usepackage{xcolor}
+\definecolor{linkpurple}{RGB}{0, 0, 238}
+ 
+\usepackage[colorlinks=true,
+            linkcolor=linkpurple,
+            urlcolor=linkpurple,
+            citecolor=linkpurple]{hyperref}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+ 
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-.85in}
+\addtolength{\textheight}{1.7in}
+ 
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+ 
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+ 
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+ 
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+ 
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+ 
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+ 
+\begin{document}
+ 
+\begin{center}
+    \textbf{\Huge \scshape Ashmit Dutta} \\ \vspace{4pt}
+    \small 612-323-1292 \quad$|$\quad
+    \href{mailto:ashmitd2@illinois.edu}{\faEnvelope\ ashmitd2@illinois.edu} \quad$|$\quad
+    \href{https://ashmitdutta.xyz}{\faGlobe\ ashmitdutta.xyz} \quad$|$\quad
+    \href{https://linkedin.com/in/ashmitdutta}{\faLinkedin\ ashmitdutta} \quad$|$\quad
+    \href{https://github.com/aedutta}{\faGithub\ aedutta}
+\end{center}
+ 
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Illinois Urbana-Champaign}{Urbana, IL}
+      {Bachelor of Science, Computer Engineering}{Aug 2023 -- May 2027}
+      \resumeItemListStart
+      \resumeItem{Accepted paper at ICML 2025 workshop on \href{https://arxiv.org/abs/2507.09850}{finetuning Chain of Thought in LLMs}.}
+      \resumeItem{Built a 2-way superscalar out-of-order CPU (\href{https://ashmitdutta.xyz/assets/docs/mp_ooo_final_report.pdf}{ECE 411}) in SystemVerilog; \textbf{top 10} in the class design competition.}
+      \resumeItemListEnd
+      % \resumeItemListStart
+      %   \resumeItem{\textbf{Coursework:} ECE 484 (Safe Autonomy), ECE 408 (GPU Programming), ECE 411 (Computer Architecture), ECE 391 (Operating Systems Engineering), CS 444 (Deep Learning).}
+      % \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  
+\section{Experience}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Nablon AI}{Jun 2026 -- Present}
+      {AI Engineering Intern}{Remote --- San Francisco, CA}
+      \resumeItemListStart
+        \resumeItem{Building \textbf{Sentinel}, an automated LLM-evaluation framework (FastAPI + async Python workers on Azure) for an enterprise automotive client; designed a 5-tier scanner pipeline flagging jailbreaks, PII, and toxicity.}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {Assured and Trustworthy AI Research Lab -- University of Illinois}{Dec 2025 -- Present}
+      {ML Research Intern (Prof. Huan Zhang)}{Urbana, IL}
+      \resumeItemListStart
+        \resumeItem{Implemented the \textbf{Softmax} operator in \href{https://github.com/Verified-Intelligence/auto_LiRPA}{\textbf{auto\_LiRPA}}, an open-source neural-network verification library (VNN-COMP winner); wrote C++ patches \textbf{cutting peak GPU memory 44\%} and Python sanity-checking pipelines across 16+ benchmarks (ResNets, ViTs, YOLO, control nets).}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {John Deere}{Jan 2025 -- Jan 2026}
+      {Software Engineer Intern}{Champaign, IL}
+      \resumeItemListStart
+        \resumeItem{Shipped a React + Spring Boot data-exporting platform \textbf{to production} for \textbf{500+ internal users}.}
+        \resumeItem{Built core REST APIs and CI/CD pipelines over PostgreSQL and DB2 handling \textbf{millions of records}.}
+        \resumeItem{Designed a multithreaded job scheduler \textbf{cutting DB search time 3x}; added AWS CloudWatch observability.}
+      \resumeItemListEnd
+ 
+    \resumeSubheading
+      {University of Chicago Data Science Institute --- DSI Summer Lab}{Jun 2024 -- Aug 2024}
+      {ML Research Intern (Fermilab collaboration)}{Chicago, IL}
+      \resumeItemListStart
+        \resumeItem{Built a reusable multi-modal \href{https://datascience.uchicago.edu/people/ashmit-dutta-he-him/}{Graph Neural Network library} (PyTorch Geometric) for Fermilab's Exa.TrkX neutrino reconstruction, training over \textbf{20,000+ detector events} on a Slurm HPC cluster.}
+      \resumeItemListEnd
+ 
+\resumeSubHeadingListEnd
+ 
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+  {\href{https://ashmitdutta.xyz/work}{\textbf{Embedded Drone Controller (Skylink v1.0)}} $|$ \emph{STM32, C, bare-metal}}{Jan 2026 -- May 2026}
+  \resumeItemListStart
+    \resumeItem{Wrote bare-metal firmware for an STM32L0 (ARM Cortex-M0+) handheld controller on a self-designed 4-layer PCB.}
+    \resumeItem{Sampled dual analog joysticks via on-chip ADC and a Bosch BMI270 IMU over \textbf{I\textsuperscript{2}C}; streamed 8-byte control packets over a sub-GHz TI CC1101 \textbf{SPI} transceiver.}
+    \resumeItem{Reworked the RF matching network from 433 to 315 MHz and verified the radio link end-to-end on hardware.}
+  \resumeItemListEnd
+
+    \resumeProjectHeading
+  {\textbf{Unix-like RISC-V Operating System} $|$ \emph{C, RISC-V, QEMU}}{Mar 2025 -- May 2025}
+  \resumeItemListStart
+    \resumeItem{Built a Unix-like OS from scratch with a \textbf{trap-based preemptive scheduler}, Sv39 virtual memory, and UART/VIRTIO/RTC device drivers.}
+    \resumeItem{Implemented syscalls, ELF program loading, and a read/write filesystem, debugged with GDB/QEMU.}
+  \resumeItemListEnd
+
+      \resumeProjectHeading
+  {\href{https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?slide=id.p\#slide=id.p}{\textbf{Autonomous Drone Racing}} $|$ \emph{ROS, Python, C++, PyTorch}}{Oct 2025 -- Dec 2025}
+  \resumeItemListStart
+    \resumeItem{Built a ROS 2 control stack (min-snap planner + geometric controller) for a Crazyflie 2.1 drone.}
+    \resumeItem{Tuned controller gains via Bayesian optimizer; \textbf{outperformed 3 \href{https://github.com/IllinoisReliableAutonomyGroup/FalconGym}{published baselines}} on real hardware.}
+    \resumeItem{Designed a voltage-feedback compensator to hold thrust under battery sag; debugged tracking error via flight logs.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+ 
+\section{Leadership, Publications \& Awards}
+  \resumeSubHeadingListStart
+    \resumeItem{\textbf{Co-Founder \& Lead Organizer, \href{https://opho.physoly.tech/}{Online Physics Olympiad (OPhO)}}: founded the largest student-run international physics competition (20k+ community); led website development and a team of 20+ students.}
+    \resumeItem{\textbf{Awards \& Leadership:} \\
+    - \textit{Winner (Modal Inference + Bright Data AI tracks), \href{https://github.com/aedutta/shot-spot-treehacks-26/}{Stanford TreeHacks 2026}} --- out of 380 teams. \\
+    - \textit{2nd Place, Bradley Mottier Innovation Challenge}, UIUC ISE (\$2,000) --- \href{https://ise.illinois.edu/news/61015}{AR glasses for ASL translation}. \\ - \textit{Executive Board Member (Treasurer)}, \href{https://one.illinois.edu/instituteofelectricalandelectronicsengineers/home/}{IEEE Chapter at UIUC}.} \\
+    - Undergraduate Teaching Assistant, CS 450 (Numerical Analysis) --- Publications: \href{https://scholar.google.com/citations?user=VSpPcv4AAAAJ&hl=en}{Google Scholar}
+  \resumeSubHeadingListEnd
+
+  \section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C/C++, Python, Java, JavaScript, SQL, SystemVerilog, RISC-V Assembly} \\
+     \textbf{Embedded \& Systems}{: 32-bit ARM Cortex-M microcontrollers / STM32, bare-metal firmware, preemptive scheduling, I\textsuperscript{2}C/SPI/UART, ADC, closed-loop / real-time control, PCB design, RTL/FPGA, GDB/QEMU} \\
+     \textbf{Testing \& Verification}{: HDL test benches, unit testing, Spike/RVFI co-simulation, hardware bring-up, CI/CD} \\
+     \textbf{Software \& Infra}{: Python, PyTorch, CUDA, REST APIs, PostgreSQL, Docker, Git, CI/CD, AWS, Linux}
+    }}
+ \end{itemize}
+\end{document}

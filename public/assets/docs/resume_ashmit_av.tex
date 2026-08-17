@@ -1,0 +1,169 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+% Define a nice purple for links
+\usepackage{xcolor}
+\definecolor{linkpurple}{RGB}{0, 0, 238}
+
+\usepackage[colorlinks=true,
+            linkcolor=linkpurple,
+            urlcolor=linkpurple,
+            citecolor=linkpurple]{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-.85in}
+\addtolength{\textheight}{1.7in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Ashmit Dutta} \\ \vspace{4pt}
+    \small 612-323-1292 \quad$|$\quad
+    \href{mailto:ashmitd2@illinois.edu}{\faEnvelope\ ashmitd2@illinois.edu} \quad$|$\quad
+    \href{https://ashmitdutta.xyz}{\faGlobe\ ashmitdutta.xyz} \quad$|$\quad
+    \href{https://linkedin.com/in/ashmitdutta}{\faLinkedin\ ashmitdutta} \quad$|$\quad
+    \href{https://github.com/aedutta}{\faGithub\ aedutta}
+\end{center}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Illinois Urbana-Champaign}{Urbana, IL}
+      {Bachelor of Science, Computer Engineering}{Aug 2023 -- May 2027}
+      \resumeItemListStart
+      \resumeItem{\textbf{Relevant coursework:} Safe Autonomy (ECE 484), GPU Programming (ECE 408), Deep Learning (CS 444).}
+      \resumeItem{Co-author on an \href{https://arxiv.org/abs/2507.09850}{ICML 2025 workshop paper} on finetuning Chain of Thought in LLMs.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Experience}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Nablon AI}{Jun 2026 -- Present}
+      {AI Engineering Intern}{Remote --- San Francisco, CA}
+      \resumeItemListStart
+        \resumeItem{Building \textbf{Sentinel}, an automated LLM-evaluation framework for an enterprise automotive client: a \textbf{5-tier scanner pipeline} (rules, embeddings, classifiers, SLMs, LLM-as-judge) flagging jailbreaks, PII, toxicity, and hallucinations.}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {Assured and Trustworthy AI Research Lab -- University of Illinois}{Dec 2025 -- Present}
+      {ML Research Intern (Prof. Huan Zhang)}{Urbana, IL}
+      \resumeItemListStart
+        \resumeItem{Implemented the \textbf{Softmax} operator in \href{https://github.com/Verified-Intelligence/auto_LiRPA}{\textbf{auto\_LiRPA}}, an open-source neural-network verification library (VNN-COMP winner); wrote C++ patches \textbf{cutting peak GPU memory 44\%} and Python sanity-checking pipelines across 16+ benchmarks (ResNets, ViTs, YOLO, control nets).}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {John Deere}{Jan 2025 -- Jan 2026}
+      {Software Engineer Intern}{Champaign, IL}
+      \resumeItemListStart
+        \resumeItem{Shipped a React + Spring Boot data platform \textbf{to production} for \textbf{500+ users}, built on REST APIs and CI/CD over PostgreSQL/DB2 handling \textbf{millions of records}.}
+        \resumeItem{Designed a multithreaded job scheduler \textbf{cutting DB search time 3x}; added AWS CloudWatch observability.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {University of Chicago Data Science Institute --- DSI Summer Lab}{Jun 2024 -- Aug 2024}
+      {ML Research Intern (Fermilab collaboration)}{Chicago, IL}
+      \resumeItemListStart
+        \resumeItem{Built a reusable multi-modal \href{https://datascience.uchicago.edu/people/ashmit-dutta-he-him/}{Graph Neural Network library} (PyTorch Geometric) for particle-track reconstruction from \textbf{20,000+ 3D detector events} on a Slurm GPU cluster (Fermilab Exa.TrkX).}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Projects}
+  \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+  {\href{https://docs.google.com/presentation/d/1EKGWp58CEbZTYGvxlE51tSKOSMj0S25LChlRmyB2_zw/edit?slide=id.p\#slide=id.p}{\textbf{Autonomous Drone Racing}} $|$ \emph{ROS 2, Python, C++, PyTorch}}{Oct 2025 -- Dec 2025}
+  \resumeItemListStart
+    \resumeItem{Built a ROS 2 autonomy stack (min-snap planner + geometric controller) for a Crazyflie 2.1; tuned gains via Bayesian optimization, \textbf{outperforming 3 \href{https://github.com/IllinoisReliableAutonomyGroup/FalconGym}{published baselines}} on real hardware.}
+    \resumeItem{Trained a \textbf{YOLOv8 gate-segmentation model} on \textbf{NeRF-rendered 3D data}, enabling vision-based localization through race gates.}
+    \resumeItem{Analyzed flight logs (Rosbags) to debug pose-tracking error and validate localization accuracy on hardware.}
+  \resumeItemListEnd
+
+    \resumeProjectHeading
+  {\href{https://github.com/aedutta/shot-spot-treehacks-26/}{\textbf{Multi-Modal Video Search Engine}} $|$ \emph{Python, Modal, FastAPI}}{Feb 2026}
+  \resumeItemListStart
+    \resumeItem{\textbf{Winner --- Modal Inference + Bright Data AI tracks at Stanford TreeHacks 2026} (out of 380 teams).}
+    \resumeItem{Built a multi-modal embedding pipeline fusing \textbf{vision and audio} for semantic video retrieval on cloud GPU inference, indexing 24 hr+ of video.}
+  \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\href{https://ashmitdutta.xyz/assets/docs/ece408_m3_report.pdf}{\textbf{GPU-Accelerated Deep Learning Inference (LeNet-5)}} $|$ \emph{C++, CUDA}}{Feb 2026 -- Apr 2026}
+      \resumeItemListStart
+         \resumeItem{Wrote shape-specialized implicit-GEMM CUDA kernels and a WMMA Tensor Core conv for a \textbf{6.6x speedup} (12.5 ms inference at batch 10{,}000); \textbf{placed 5/130 in the ECE 408 competition}.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Leadership, Publications \& Awards}
+  \resumeSubHeadingListStart
+    \resumeItem{\textbf{Co-Founder \& Lead Organizer, \href{https://opho.physoly.tech/}{Online Physics Olympiad (OPhO)}}: founded the largest student-run international physics competition (20k+ community); led website development and a team of 20+ students.}
+    \resumeItem{\textbf{Awards \& Leadership:} \\
+    - \textit{2nd Place, Bradley Mottier Innovation Challenge}, UIUC ISE (\$2,000) --- \href{https://ise.illinois.edu/news/61015}{computer-vision AR glasses for ASL translation}. \\ - \textit{Executive Board Member (Treasurer)}, \href{https://one.illinois.edu/instituteofelectricalandelectronicsengineers/home/}{IEEE Chapter at UIUC}.} \\
+    - \textit{Publication:} \textbf{3D shape acquisition via computer vision} --- Intl. Sunflower Conf., 2023 (\href{https://scholar.google.com/citations?user=VSpPcv4AAAAJ&hl=en}{Scholar}). \\
+    - Undergraduate Teaching Assistant, CS 450 (Numerical Analysis)
+  \resumeSubHeadingListEnd
+
+  \section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C/C++, Java, JavaScript, SQL} \\
+     \textbf{ML \& Computer Vision}{: PyTorch, CUDA, computer vision, perception, NeRF (3D), deep learning} \\
+     \textbf{Robotics \& Autonomy}{: ROS 2, motion planning, localization \& tracking, state estimation, control systems} \\
+     \textbf{Infra \& Cloud}{: Docker, AWS, GPU/CUDA, Slurm HPC, data pipelines, 3D visualization, simulation, CI/CD, Git, Linux}
+    }}
+ \end{itemize}
+\end{document}

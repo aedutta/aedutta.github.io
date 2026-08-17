@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Section from '../components/Section.jsx';
 import './ProjectsPage.css';
 
@@ -12,7 +11,7 @@ const technicalProjects = [
     featured: true,
     description: (
       <>
-        Designed a 2-way superscalar out-of-order RV32IM processor in SystemVerilog with explicit register renaming (RAT/RRF/PRF/free list), 16-entry ROB, split load/store queue with store-to-load forwarding, and tournament branch predictor with BTB and RAS. Achieved a geometric-mean PD<sup>4</sup> of ~253 (3.6× over staff baseline) and a peak IPC of 1.325 on compression, ranking top 10 in the class design competition. Synthesized at 500 MHz with zero RVFI/Spike mismatches across all six benchmarks.
+        A 2-way superscalar out-of-order RV32IM core in SystemVerilog — register renaming, a 16-entry ROB, split load/store queue, and a tournament branch predictor. Synthesized at 500 MHz with zero Spike mismatches, and ranked top 10 in the class design competition at 3.6× the staff baseline.
       </>
     ),
   },
@@ -24,7 +23,7 @@ const technicalProjects = [
     featured: true,
     description: (
       <>
-        Designed and built a handheld controller PCB (Skylink v1.0) that pairs with a custom quadcopter over a sub-GHz wireless link. Centered on an STM32L031K6T6 sampling two analog COM-09032 thumb-joysticks via on-chip ADC, reading a Bosch BMI270 IMU over I²C for tilt input, and transmitting 8-byte packets to the drone through a TI CC1101 transceiver. Reworked the matching network from 433 MHz to 315 MHz in-place to match the available antenna and verified the link end-to-end. Schematic, 4-layer PCB layout, and bare-metal STM32 HAL firmware all developed in-house.
+        A handheld controller PCB (Skylink v1.0) that pairs with a custom quadcopter over a sub-GHz link — an STM32 samples dual thumb-joysticks and a BMI270 IMU and transmits to a CC1101 transceiver. Schematic, 4-layer layout, and bare-metal firmware all in-house; reworked the RF matching network from 433 to 315 MHz and verified the link end-to-end.
       </>
     ),
   },
@@ -36,7 +35,7 @@ const technicalProjects = [
     featured: true,
     description: (
       <>
-        Optimized a forward-pass CNN in CUDA for an NVIDIA A40, combining a shape-specialized implicit-GEMM Conv1 kernel (constant-memory weights, 4-column thread coarsening) with a WMMA Tensor Core Conv2 kernel performing fused implicit im2col plus tiled FP16/FP32 matmul. Achieved 12.55 ms total convolution time at batch 10000 with 0.8714 accuracy — a ~6.6× speedup over the M2 fused baseline, well under the 60 ms full-credit target. Drove design via Nsight Compute roofline/stall analysis, parameter sweeps over WMMA tile shapes and warps-per-block, and per-optimization measurement (streams, constant memory, restrict, loop unrolling, FP16, joint register/shared tiling).
+        Optimized a forward-pass CNN in CUDA for an NVIDIA A40, pairing an implicit-GEMM kernel with a WMMA Tensor Core kernel that fuses im2col and FP16/FP32 matmul. Hit 12.55 ms at batch 10,000 (0.8714 accuracy) — ~6.6× over the fused baseline and well under the 60 ms target — placing 5th of 130 in the class design competition.
       </>
     ),
   },
@@ -93,13 +92,16 @@ const technicalProjects = [
     ),
   },
   {
-    title: 'FPGA DJ Board',
+    title: 'FPGA DJ Controller (ECE 385)',
     href: 'https://github.com/aedutta/fpga-dj-board',
     period: 'Oct 2024 – Dec 2024',
     tags: ['Hardware', 'FPGA'],
     description: (
       <>
-        Built an FPGA audio processor integrating DDR3 memory reads from a micro-SD chip (storing WAV file data). Built PWM audio handling and interfacing, FFT IP, and real-time user controls on the board for looping, filtering, and playback speed. Verified functionality with Vivado testbenches that emulate SD transactions, DDR3 bursts, then confirmed end-to-end playback and effects on hardware.
+        An FPGA-based audio effects processor that works like a DJ controller — loop, speed up/slow down, and filter live audio. Streams raw PCM from an SD card through DDR3 into a DSP pipeline (FIR filter, echo) and out as PWM, with on-board switches and HEX/LED status. Verified in Vivado testbenches, then confirmed end-to-end on hardware.{' '}
+        <a href="/assets/docs/DJ Controller Report.pdf" target="_blank" rel="noreferrer">
+          Full report ↗
+        </a>
       </>
     ),
   },
@@ -150,29 +152,6 @@ const technicalProjects = [
   },
 ];
 
-const projectLinks = [
-  { 
-    title: 'Analog Spectrum Viewer',
-    href: '/assets/docs/spectrumviewer.pdf',
-    description: 'A document detailing the design of an analog spectrum analyzer.',
-  },
-  { 
-    title: 'Generative Art', 
-    href: '/animations', 
-    internal: true,
-    description: 'A collection of p5.js animations and mathematical visualizations.',
-  },
-  {
-    title: 'Computer Vision AR glasses',
-    href: 'https://github.com/aedutta/ASL-Identification',
-    description: (
-      <>
-        My team <a href="https://ise.illinois.edu/newsroom/61015" target="_blank" rel="noreferrer">won second place at the Bradley Mottier Innovation Competition</a> ($2000 prize) for our startup pitch.
-      </>
-    ),
-  },
-];
-
 const ProjectCard = ({ title, href, internal, description, period, venue, tags, featured }) => (
   <article className={`projects__card${featured ? ' projects__card--featured' : ''}`}>
     <div className="projects__card-header">
@@ -206,70 +185,16 @@ const ProjectCard = ({ title, href, internal, description, period, venue, tags, 
   </article>
 );
 
-const ProjectsPage = () => {
-  const [activeSection, setActiveSection] = useState('technical');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-80px 0px -80% 0px',
-        threshold: 0,
-      }
-    );
-
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
-  }, []);
-
-  const tocLinks = [
-    { id: 'technical', label: 'Projects' },
-  ];
-
-  return (
-    <div className="projects-container">
-      <aside className="projects-toc">
-        <h3>Contents</h3>
-        <ul>
-          {tocLinks.map(({ id, label }) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className={activeSection === id ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                  setActiveSection(id);
-                }}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      <div className="projects">
-        <Section id="technical" title="Projects">
-          <div className="projects__grid">
-            {technicalProjects.map((item, i) => (
-              <ProjectCard key={i} {...item} />
-            ))}
-          </div>
-        </Section>
+const ProjectsPage = () => (
+  <div className="projects">
+    <Section title="Projects">
+      <div className="projects__grid">
+        {technicalProjects.map((item, i) => (
+          <ProjectCard key={i} {...item} />
+        ))}
       </div>
-    </div>
-  );
-};
+    </Section>
+  </div>
+);
 
 export default ProjectsPage;

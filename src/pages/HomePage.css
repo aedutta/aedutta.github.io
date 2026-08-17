@@ -95,88 +95,23 @@
   margin: 2.9rem 0;
 }
 
-/* --- Datasheet front matter ------------------------------------------------ */
+/* --- Bio ------------------------------------------------------------------- */
 
-.paper__masthead {
-  margin-bottom: 0;
-}
-
-.ds-runhead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--rule);
-  font-family: 'Inconsolata', monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-/* General description — Features column + prose, datasheet style */
-.ds-overview {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
-  gap: 1.6rem 2.2rem;
-  align-items: start;
-}
-
-@media (max-width: 620px) {
-  .ds-overview {
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
-  }
-}
-
-.ds-subhead {
-  font-family: var(--font-display);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  margin: 0 0 0.6rem;
-}
-
-.ds-features {
-  border-left: 2px solid var(--accent);
-  padding-left: 1rem;
-}
-
-.ds-features__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ds-features__list li {
-  position: relative;
-  padding-left: 1.1rem;
-  margin-bottom: 0.55rem;
-  font-size: 0.9rem;
-  line-height: 1.4;
+.paper__bio p {
+  font-size: 0.98rem;
+  line-height: 1.68;
+  max-width: 66ch;
+  margin: 0 0 1rem;
   color: var(--ink-soft);
 }
 
-.ds-features__list li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-  font-size: 0.8em;
+.paper__bio p:first-child {
+  font-size: 1.06rem;
+  color: var(--ink);
 }
 
-.ds-features__list li:last-child {
+.paper__bio p:last-child {
   margin-bottom: 0;
-}
-
-.ds-desc > :first-child {
-  margin-top: 0;
 }
 
 .paper__heading {
@@ -294,104 +229,6 @@
 
 .paper__colophon .katex {
   font-size: 0.95em;
-}
-
-.paper__fnref {
-  border-bottom: none;
-  padding-bottom: 0;
-  text-decoration: none;
-}
-
-.paper__fnref sup {
-  font-family: 'Inconsolata', monospace;
-  font-size: 0.68em;
-  color: var(--link);
-  letter-spacing: 0.02em;
-  margin-left: 0.05em;
-}
-
-.paper__fnref:hover sup {
-  color: var(--link-hover);
-}
-
-.paper__fnref--star sup {
-  font-family: var(--font-display);
-  font-style: normal;
-  font-size: 0.62em;
-  color: var(--ink-mute);
-  margin-left: 0.18em;
-  vertical-align: super;
-}
-
-.paper__fnref--star:hover sup {
-  color: var(--link);
-}
-
-.paper__footnotes {
-  margin-top: 3rem;
-  padding-top: 1.1rem;
-  position: relative;
-}
-
-.paper__footnotes::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5rem;
-  height: 0;
-  border-top: 1px solid var(--rule);
-}
-
-.paper__footnotes-list {
-  margin: 0;
-  padding-left: 1.25rem;
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: var(--ink-soft);
-}
-
-.paper__footnotes-list--star {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 0 0.6rem;
-}
-
-.paper__fn-symbol {
-  font-family: var(--font-display);
-  color: var(--ink-mute);
-  margin-right: 0.4rem;
-  font-size: 0.95em;
-}
-
-.paper__footnotes-list li {
-  margin-bottom: 0.4rem;
-}
-
-.paper__footnotes-list li::marker {
-  font-family: 'Inconsolata', monospace;
-  font-size: 0.78em;
-  color: var(--ink-mute);
-}
-
-.paper__footnotes-list li:target {
-  background: rgba(6, 69, 173, 0.06);
-  border-radius: 2px;
-  padding: 0.2rem 0.4rem;
-  margin-left: -0.4rem;
-}
-
-.paper__fn-back {
-  margin-left: 0.4rem;
-  font-family: 'Inconsolata', monospace;
-  font-size: 0.95em;
-  color: var(--ink-mute);
-  border-bottom: none;
-  text-decoration: none;
-}
-
-.paper__fn-back:hover {
-  color: var(--link);
 }
 
 .paper__list {

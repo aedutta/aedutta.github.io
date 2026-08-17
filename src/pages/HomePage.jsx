@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Tex from '../components/Tex.jsx';
+import Bio from '../components/Bio.jsx';
 import { publications } from '../data/research.jsx';
 import './HomePage.css';
 
@@ -169,22 +170,8 @@ const writing = Object.entries(blogModules)
   .sort((a, b) => new Date(b.date) - new Date(a.date))
   .slice(0, 3);
 
-const features = [
-  <>AI evals intern at <a href="https://nablon.ai/researchers"><b>Nablon&nbsp;AI</b></a></>,
-  <>Neural-network verification, <a href="https://www.huan-zhang.com/" target="_blank" rel="noreferrer">Assured&nbsp;&amp;&nbsp;Trustworthy&nbsp;AI&nbsp;Lab</a></>,
-  <>Co-author, <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">ICML&nbsp;2025 workshop</a> (NVIDIA Nemo)</>,
-  <>2×&nbsp;track-prize winner, <a href="https://github.com/aedutta/shot-spot-treehacks-26/" target="_blank" rel="noreferrer">Stanford&nbsp;TreeHacks&nbsp;2026</a></>,
-  <>Founder, <a href="https://opho.physoly.tech/" target="_blank" rel="noreferrer">Online Physics Olympiad</a> (20k+ members)</>,
-  <>Prior: <b>John Deere</b> SWE · <b>UChicago DSI</b> / Fermilab</>,
-];
-
 const HomePage = () => (
-  <article className="paper paper--datasheet">
-    <div className="ds-runhead" aria-hidden="true">
-      <span>AD-2026 · PERSONAL DATASHEET</span>
-      <span>REV. A · 2026</span>
-    </div>
-
+  <article className="paper">
     <header className="paper__masthead">
       <div className="paper__masthead-main">
         <h1 className="paper__title">Ashmit Dutta</h1>
@@ -214,42 +201,9 @@ const HomePage = () => (
 
     <section className="paper__section">
       <h2 className="paper__heading">
-        <span className="paper__section-num">§1.</span> General Description
+        <span className="paper__section-num">§1.</span> About
       </h2>
-      <div className="ds-overview">
-        <div className="ds-features">
-          <h3 className="ds-subhead">Features</h3>
-          <ul className="ds-features__list">
-            {features.map((f, i) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="ds-desc">
-          <p className="paper__lede">
-            I'm a senior computer engineer at UIUC, drawn to problems where
-            hardware meets the model — autonomy, machine learning, and systems. Currently working at an AI startup. 
-            <a href="#fn-1" id="fnref-1" className="paper__fnref" aria-describedby="footnote-label">
-              <sup>1</sup>
-            </a>
-          </p>
-          <p>
-            <b>Current interests:</b> multimodal inference, neural-network{' '}
-            <a
-              href="https://github.com/Verified-Intelligence/alpha-beta-CROWN"
-              target="_blank"
-              rel="noreferrer"
-            >
-              verification
-            </a>, and physics reasoning in LLMs.
-          </p>
-          <p>
-            For fun I've built a Unix-like operating system, an out-of-order
-            CPU, and an autonomous drone from scratch. I also founded a physics olympiad that got a little out of hand.
-          </p>
-        </div>
-      </div>
+      <Bio />
     </section>
 
     <section className="paper__section">
@@ -363,18 +317,6 @@ const HomePage = () => (
       <span className="paper__elsewhere-sep"> · </span>
       <Link to="/physics">physics</Link>
     </nav>
-
-    <aside className="paper__footnotes">
-      <ol className="paper__footnotes-list">
-        <li id="fn-1">
-          Also: stargazing, rhythm games, korean barbeque, long walks in
-          nature, and reading wikipedia.{' '}
-          <a href="#fnref-1" className="paper__fn-back" aria-label="back to text">
-            ↩
-          </a>
-        </li>
-      </ol>
-    </aside>
 
     <details className="paper__cite">
       <summary>Cite this page</summary>
