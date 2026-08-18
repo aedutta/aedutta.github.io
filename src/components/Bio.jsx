@@ -36,7 +36,7 @@ export default function Bio() {
           OPhO
         </a>
         , the Online Physics Olympiad, which I co-founded six years ago. OPhO is
-        now the largest student-run international physics competition, with a
+        now the largest international online-run physics competition, with a
         22k+ community. Sponsors have included Citadel, Jane Street, and Wolfram.
       </p>
 
