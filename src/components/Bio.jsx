@@ -2,15 +2,10 @@ export default function Bio() {
   return (
     <section className="paper__bio">
       <p>
-        I'm a senior in Computer Engineering at UIUC, and I currently work on AI
-        evals at{' '}
-        <a href="https://nablon.ai/researchers" target="_blank" rel="noreferrer">
-          Nablon AI
-        </a>
-        . I work on AI safety and reasoning research. At UIUC, I do formal
-        neural network verification research with{' '}
+        I'm a senior in Computer Engineering at UIUC, where I do formal neural
+        network verification research in{' '}
         <a href="https://huan-zhang.com" target="_blank" rel="noreferrer">
-          Huan Zhang's group
+          Huan Zhang's lab
         </a>
         .
       </p>
@@ -41,10 +36,14 @@ export default function Bio() {
       </p>
 
       <p>
-        Before this, I spent a year as a software engineer at John Deere, where
-        I shipped production tools to 500+ users. I did ML research at UChicago's
-        Data Science Institute, building graph neural networks for Fermilab's
-        neutrino reconstruction project. I also co-authored{' '}
+        I also workeed on AI evals at a startup {' '}
+        <a href="https://nablon.ai/researchers" target="_blank" rel="noreferrer">
+          Nablon AI
+        </a>. Before that, I spent a year as a
+        software engineer at John Deere, where I shipped production tools to
+        500+ users. I did ML research at UChicago's Data Science Institute,
+        building graph neural networks for Fermilab's neutrino reconstruction
+        project. I also co-authored{' '}
         <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">
           <em>
             Is Human-Written Data Enough? The Challenge of Teaching Reasoning to
