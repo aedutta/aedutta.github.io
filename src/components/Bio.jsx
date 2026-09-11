@@ -36,25 +36,23 @@ export default function Bio() {
       </p>
 
       <p>
-        I also workeed on AI evals at a startup {' '}
+        Previously, I worked on AI evals at a startup {' '}
         <a href="https://nablon.ai/researchers" target="_blank" rel="noreferrer">
           Nablon AI
         </a>. Before that, I spent a year as a
-        software engineer at John Deere, where I shipped production tools to
-        500+ users. I did ML research at UChicago's Data Science Institute,
+        software engineer at John Deere working on prod. I did ML research at UChicago's Data Science Institute,
         building graph neural networks for Fermilab's neutrino reconstruction
-        project. I also co-authored{' '}
+        project. I also co-authored a {' '}
         <a href="https://arxiv.org/abs/2507.09850" target="_blank" rel="noreferrer">
           <em>
-            Is Human-Written Data Enough? The Challenge of Teaching Reasoning to
-            LLMs Without RL or Distillation
+            LLM reasoning paper
           </em>
         </a>{' '}
         with NVIDIA researchers, published at the ICML 2025 AI for Math Workshop.
       </p>
 
       <p>
-        For fun, I build at hackathons — most recently a multimodal video search
+        I participate in hackathons and most recently made a multimodal video search
         engine that won two track prizes at{' '}
         <a
           href="https://github.com/aedutta/shot-spot-treehacks-26/"
