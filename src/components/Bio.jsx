@@ -30,9 +30,8 @@ export default function Bio() {
         <a href="https://opho.physoly.tech" target="_blank" rel="noreferrer">
           OPhO
         </a>
-        , the Online Physics Olympiad, which I co-founded six years ago. OPhO is
-        now the largest international online-run physics competition, with a
-        22k+ community. Sponsors have included Citadel, Jane Street, and Wolfram.
+        , the Online Physics Olympiad, which I co-founded six years ago during COVID-19. OPhO is
+        now the largest online-run physics competition in the world.
       </p>
 
       <p>
